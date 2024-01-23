@@ -23,8 +23,12 @@ const AuthScreen = ({navigation}: Props) => {
     return {transform: [{translateX: translateX.value}]};
   });
   const GoToDashBoard = () => {
-    navigation.navigate('DashBoard')
-  }
+    navigation.reset({
+       index: 0,
+       routes: [{ name: 'DashBoard' }],
+    });
+   };
+   
   return (
     <>
       <StatusBar translucent backgroundColor="transparent" />

@@ -4,12 +4,12 @@ import styles from './Styles';
 
 type Props = {};
 
-const DashBoardHome = (props: Props) => {
+const Compartir = (props: Props) => {
   return (
     <View style={styles.container}>
-      <Text>DashBoardHome</Text>
+      <Text>Compartir App</Text>
     </View>
   );
 };
 
-export default DashBoardHome;
+export default Compartir;

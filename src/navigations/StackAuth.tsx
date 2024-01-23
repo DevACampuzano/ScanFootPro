@@ -4,7 +4,7 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import {ActivityIndicator, View} from 'react-native';
 import HomeScreen from '../screens/Auth/Home/HomeScreen';
 import AuthScreen from '../screens/Auth/AuthDashBoardScreen';
-import StackDashBoard from './StackDashBoard';
+import DrawerDashBoard from './DrawerDashBoard';
 
 export type RootStackParams = {
   Auth: any;
@@ -24,7 +24,7 @@ const AppNavigator = () => {
       >
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Auth" component={AuthScreen} />
-        <Stack.Screen name="DashBoard" component={StackDashBoard} />
+        <Stack.Screen name="DashBoard" component={DrawerDashBoard} />
       </Stack.Navigator>
     </>
   );

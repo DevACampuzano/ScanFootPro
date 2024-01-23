@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import {View, Text} from 'react-native';
+import {View, Text, StatusBar} from 'react-native';
 import React, {useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import AppNavigator from './src/navigations/StackAuth';
@@ -20,6 +20,7 @@ const App = (props: Props) => {
 
   return (
     <>
+      <StatusBar translucent backgroundColor="transparent" barStyle="dark-content"/>
       <AnimatedSplash
         translucent={true}
         isLoaded={isLoaded}

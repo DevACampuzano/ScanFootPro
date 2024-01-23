@@ -1,12 +1,13 @@
 import {StyleSheet} from 'react-native';
-import {Colors, normalize} from '../../../theme/Styles';
+import { Colors, normalize } from '../../../theme/Styles';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 24,
+    alignItems: 'center',
+    justifyContent: 'center',
     // backgroundColor: '#ffdddd',
-    // justifyContent: 'space-between'
   },
   containerAuth: {
     justifyContent: 'center',
@@ -23,7 +24,7 @@ const styles = StyleSheet.create({
     marginTop: -100
   },
   title:{
-    fontSize: normalize(50),
+    fontSize: normalize(25),
     color: Colors.primary,
     fontWeight: 'bold',
   }
