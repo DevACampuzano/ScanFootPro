@@ -95,6 +95,12 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release{
+            storeFile file("scanfootpro-key.keystore")
+            storePassword "Kiura2023"
+            keyAlias "scanfootpro-key"
+            keyPassword "Kiura2023"
+        }
     }
     buildTypes {
         debug {
