@@ -32,7 +32,7 @@ const Login = ({ route, navigation  }: Props) => {
           style={{
             justifyContent: 'space-around',
             width: '100%',
-            height: 200,
+            height: 230,
             alignItems: 'center',
           }}>
           <InputText

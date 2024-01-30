@@ -61,12 +61,9 @@ function CustomDrawerContent(props) {
         renderItem={({item}) => (
           <View
             style={{
-              //   backgroundColor: 'red',
               marginTop: 5,
-              //  paddingHorizontal: 10,
               gap: 5,
             }}>
-            {/* <Text style={styles.sectionTitle}>{item.title}</Text> */}
             {item.data.map((subItem, subIndex) => (
               <TouchableOpacity
                 key={subIndex}

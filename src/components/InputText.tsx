@@ -38,11 +38,13 @@ export const InputText = ({
               style={{
                 height: 40,
                 width: '87%',
+                color: '#333'
               }}
               onChangeText={handleTextChange}
               keyboardType="email-address"
               value={text}
               placeholder={name}
+              placeholderTextColor="#000" 
             />
           </View>
         ) : Type === 'Password' ? (
@@ -56,6 +58,7 @@ export const InputText = ({
               onChangeText={handleTextChange}
               value={text}
               placeholder="Password"
+              placeholderTextColor="#000"
               secureTextEntry={Password}
             />
             <TouchableOpacity onPress={() => handlePassword()}>
@@ -77,6 +80,7 @@ export const InputText = ({
               onChangeText={handleTextChange}
               value={text}
               placeholder={name}
+              placeholderTextColor="#000"
             />
           </View>
         )}

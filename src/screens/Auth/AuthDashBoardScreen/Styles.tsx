@@ -10,6 +10,7 @@ const styles = StyleSheet.create({
   containerAuth: {
     justifyContent: 'center',
     alignItems: 'center',
+    height: 110
   },
   shoes: {
     width: 400,

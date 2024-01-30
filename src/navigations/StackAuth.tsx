@@ -6,6 +6,7 @@ import HomeScreen from '../screens/Auth/Home/HomeScreen';
 import AuthScreen from '../screens/Auth/AuthDashBoardScreen';
 import DrawerDashBoard from './DrawerDashBoard';
 
+
 export type RootStackParams = {
   Auth: any;
   Home: any;

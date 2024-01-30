@@ -135,7 +135,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     // backgroundColor: '#F8E9B0',
-    backgroundColor: 'transparent'
+    backgroundColor: 'transparent',
   },
   itemContainer: {
     flex: 1,
