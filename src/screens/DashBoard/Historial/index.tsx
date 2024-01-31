@@ -1,4 +1,4 @@
-import {View, Text} from 'react-native';
+import {View, Text, Image} from 'react-native';
 import React from 'react';
 import styles from './Styles';
 
@@ -10,7 +10,16 @@ interface Props extends DrawerScreenProps<DrawerDashBoardParams, "Home"> {}
 const Historial = (props: Props) => {
   return (
     <View style={styles.container}>
-      <Text>Historial de pacientes</Text>
+      <Image
+            source={require('../../../assets/img/pie.png')}
+            style={{
+              position: 'absolute',
+              top: -110,
+              opacity: 0.3
+            }}
+          />
+      <Text style={styles.title}>Historial de pacientes</Text>
+      <Text style={{color: '#000', fontSize: 20}}>Estamos trabajando en ello..</Text>
     </View>
   );
 };
