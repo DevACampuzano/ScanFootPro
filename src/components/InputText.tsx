@@ -4,7 +4,7 @@ import Icon from 'react-native-vector-icons/Ionicons';
 import {TouchableOpacity} from 'react-native-gesture-handler';
 
 interface InputTextProps {
-  onchageText: (e: string) => void;
+  onchageText: (value: any, key: string) => void;
   name: string;
   IconName?: string;
   Type: string;

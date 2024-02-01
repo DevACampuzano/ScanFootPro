@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     height: 480,
     borderColor: 'red',
     // borderWidth: 1,
-    marginTop: -100
+    marginTop: -80
   },
   title:{
     fontSize: normalize(50),

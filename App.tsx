@@ -7,6 +7,7 @@ import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import AnimatedSplash from 'react-native-animated-splash-screen';
 import {LogBox} from 'react-native';
 import {check, PERMISSIONS, request} from 'react-native-permissions';
+import AppContext from './src/contexts/AppContext';
 
 type Props = {};
 
@@ -53,13 +54,15 @@ const App = (props: Props) => {
       <AnimatedSplash
         translucent={true}
         isLoaded={isLoaded}
-        logoImage={require('./src/assets/img/san_Roman.png')}
+        logoImage={require('./src/assets/img/SplashScreeen.png')}
         backgroundColor={'#effefd'}
-        logoHeight={150}
-        logoWidth={150}>
+        logoHeight={200}
+        logoWidth={200}>
         <GestureHandlerRootView style={{flex: 1}}>
           <NavigationContainer>
-            <AppNavigator />
+            <AppContext>
+              <AppNavigator />
+            </AppContext>
           </NavigationContainer>
         </GestureHandlerRootView>
       </AnimatedSplash>

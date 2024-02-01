@@ -13,14 +13,16 @@ const Register = ({navigation}: Props) => {
   return (
     
       <View style={styles.container}>
-        <Image
-            source={require('../../../assets/img/pie.png')}
-            style={{
-              position: 'absolute',
-              top: -110,
-              opacity: 0.3
-            }}
-          />
+         <Image
+          source={require('../../../assets/img/pie.png')}
+          style={{
+            position: 'absolute',
+            top: -110,
+            opacity: 0.3,
+            width: '100%',
+            height: 500,
+          }}
+        />
         <Text style={styles.title}>Regístrate</Text>
         <View style={styles.containerBtn}>
           <Butukon

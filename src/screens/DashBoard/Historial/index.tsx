@@ -10,14 +10,16 @@ interface Props extends DrawerScreenProps<DrawerDashBoardParams, "Home"> {}
 const Historial = (props: Props) => {
   return (
     <View style={styles.container}>
-      <Image
-            source={require('../../../assets/img/pie.png')}
-            style={{
-              position: 'absolute',
-              top: -110,
-              opacity: 0.3
-            }}
-          />
+       <Image
+          source={require('../../../assets/img/pie.png')}
+          style={{
+            position: 'absolute',
+            top: -110,
+            opacity: 0.3,
+            width: '100%',
+            height: 500,
+          }}
+        />
       <Text style={styles.title}>Historial de pacientes</Text>
       <Text style={{color: '#000', fontSize: 20}}>Estamos trabajando en ello..</Text>
     </View>

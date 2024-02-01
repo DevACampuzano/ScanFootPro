@@ -32,8 +32,14 @@ const AuthScreen = ({navigation}: Props) => {
   return (
     <>
       <StatusBar translucent backgroundColor="transparent" />
+      {/* <StatusBar backgroundColor="#ff2323" barStyle="light-content" /> */}
       <View style={styles.container}>
-        
+        {/* <Animated.View>
+          <Image
+            source={require('../../../assets/img/pie.png')}
+            style={styles.shoes}
+          />
+        </Animated.View> */}
         <Animated.View style={[styles.containerAuth, animatedStyles]}>
           <Text style={styles.title}>Bienvenido</Text>
         </Animated.View>

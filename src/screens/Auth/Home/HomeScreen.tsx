@@ -36,7 +36,7 @@ const HomeScreen = ({ navigation }: Props) => {
           />
         </Animated.View>
         <Animated.View style={[styles.containerAuth, animatedStyles]}>
-          <Image source={require('../../../assets/img/san_Roman.png')} />
+          <Image source={require('../../../assets/img/san_Roman.png')} style={{width: 160, height: 100}}/>
           <Text style={styles.title}>Bienvenido</Text>
           <Butukon title="Comenzar" colorFondo="#009DA6" height={60} border={20} onclick={() => navigation.navigate('Auth')}/>
           

@@ -28,13 +28,15 @@ const Compartir = (props: Props) => {
   return (
     <View style={styles.container}>
       <Image
-            source={require('../../../assets/img/pie.png')}
-            style={{
-              position: 'absolute',
-              top: -110,
-              opacity: 0.3
-            }}
-          />
+          source={require('../../../assets/img/pie.png')}
+          style={{
+            position: 'absolute',
+            top: -110,
+            opacity: 0.3,
+            width: '100%',
+            height: 500,
+          }}
+        />
       <Text style={styles.title}>Comparte ScanFootPro</Text>
       <View style={{
         width: '80%',
