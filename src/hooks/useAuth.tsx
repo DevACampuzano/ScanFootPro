@@ -1,7 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import React from 'react';
+import useApi from './useApi';
 
 const useAuth = () => {
+    const {} = useApi()
   const getLocal = async () => {
     try {
       return await AsyncStorage.getItem('data').then(data => {
@@ -26,6 +28,9 @@ const useAuth = () => {
     getLocal,
     removeLocal,
   };
+  const singInt = () => {
+
+  }
 };
 
 export default useAuth;
