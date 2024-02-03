@@ -7,6 +7,7 @@ import Butukon from '../../../components/Butukon';
 import {MaterialTopTabScreenProps} from '@react-navigation/material-top-tabs';
 import {RootTopTabParams} from '../../../navigations/TopTabNavigatorAuth';
 import useForm from '../../../hooks/useForm';
+import useAuth from '../../../hooks/useAuth';
 
 interface Props extends MaterialTopTabScreenProps<RootTopTabParams, 'login'> {}
 
@@ -17,6 +18,7 @@ const Login = ({route, navigation}: Props) => {
     Password: ''
   })
   console.log(form)
+  const {signIn} = useAuth()
   return (
     <DismissKeyboard>
       <View style={styles.container}>
@@ -64,7 +66,7 @@ const Login = ({route, navigation}: Props) => {
           title="Inicia sessión"
           height={60}
           border={20}
-          onclick={() => GoToDashBoard()}
+          onclick={() => signIn()}
         />
       </View>
     </DismissKeyboard>

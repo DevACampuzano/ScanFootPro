@@ -1,10 +1,9 @@
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import useApi from './useApi';
 
 const useAuth = () => {
-    const {} = useApi()
-  const getLocal = async () => {
+ const getLocal = async () => {
     try {
       return await AsyncStorage.getItem('data').then(data => {
         if (data === null) {
@@ -15,22 +14,30 @@ const useAuth = () => {
     } catch (e) {
       // error reading value
     }
-  };
+ };
 
-  const removeLocal = async () => {
+ const removeLocal = async () => {
     try {
       return await AsyncStorage.clear();
     } catch (e) {
       // error reading value
     }
-  };
-  return {
+ };
+
+ const signIn = async () => {
+    const { data, loading, error } = useApi('http://localhost:4000/api/', 'GET');
+    if (!loading && !error) {
+      console.log(data);
+    } else {
+      console.error(error);
+    }
+ };
+
+ return {
     getLocal,
     removeLocal,
-  };
-  const singInt = () => {
-
-  }
+    signIn,
+ };
 };
 
 export default useAuth;

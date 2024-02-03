@@ -1,30 +1,30 @@
-import { useState, useEffect } from 'react';
 import axios from 'axios';
 
-interface APiProsp {
-    data: object;
-    loading: boolean;
-    error: string | object;
-}
+type MethodApi = 'GET' | 'POST' | 'DELETE';
 
-function useApi(url: string): APiProsp {
- const [data, setData] = useState({});
- const [loading, setLoading] = useState(true);
- const [error, setError] = useState({});
+async function useApi(url: string, method: MethodApi, body = null) {
+ let request;
 
- useEffect(() => {
-    axios.get(url)
-      .then((response) => {
-        setData(response.data);
-        setLoading(false);
-      })
-      .catch((err) => {
-        setError(err);
-        setLoading(false);
-      });
- }, [url]);
+ switch (method) {
+    case 'GET':
+      request = axios.get(url);
+      break;
+    case 'POST':
+      request = axios.post(url, body);
+      break;
+    case 'DELETE':
+      request = axios.delete(url, {data: body});
+      break;
+    default:
+      throw new Error(`Método ${method} no soportado`);
+ }
 
- return { data, loading, error };
+ try {
+    const response = await request;
+    return {data: response.data, loading: false, error: null};
+ } catch (error) {
+    return {data: null, loading: false, error};
+ }
 }
 
 export default useApi;
