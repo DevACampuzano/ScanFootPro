@@ -9,6 +9,7 @@ interface InputTextProps {
   IconName?: string;
   Type: string;
   color: string;
+  value: any;
 }
 export const InputText = ({
   onchageText,
@@ -16,8 +17,9 @@ export const InputText = ({
   IconName,
   Type,
   color,
+  value,
 }: InputTextProps) => {
-  const [text, setText] = useState('');
+  const [text, setText] = useState(value);
   const [Password, setPassword] = useState(true);
 
   const handleTextChange = newText => {
@@ -54,11 +56,12 @@ export const InputText = ({
               style={{
                 height: 40,
                 width: '75%',
+                color: '#333'
               }}
               onChangeText={handleTextChange}
               value={text}
               placeholder="Password"
-              placeholderTextColor="#000"
+              placeholderTextColor="#000" 
               secureTextEntry={Password}
             />
             <TouchableOpacity onPress={() => handlePassword()}>

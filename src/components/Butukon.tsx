@@ -3,18 +3,19 @@ import React, {useState} from 'react';
 import {normalize, globalStyles} from '../theme/Styles';
 import Icon from 'react-native-vector-icons/Ionicons';
 
-type Props = {
+interface ButukonProps {
   title: string;
   color?: string;
   colorFondo?: string;
   border?: number;
-  width?: number | string;
-  height?: number | string;
+  width?: string;
+  height?: number;
   icon?: string;
   onclick?: () => void;
-};
+ }
+ 
 
-const Butukon = ({
+ const Butukon: React.FC<ButukonProps> = ({
   title,
   color = 'white',
   colorFondo = '#364989',
@@ -23,7 +24,7 @@ const Butukon = ({
   height = 50,
   icon,
   onclick = () => console.log('hello desde el Butukon'),
-}): Props => {
+}) => {
   return (
     <>
       <TouchableOpacity
