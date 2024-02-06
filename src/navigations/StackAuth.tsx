@@ -5,6 +5,8 @@ import {ActivityIndicator, View} from 'react-native';
 import HomeScreen from '../screens/Auth/Home/HomeScreen';
 import AuthScreen from '../screens/Auth/AuthDashBoardScreen';
 import DrawerDashBoard from './DrawerDashBoard';
+import { useContext } from 'react';
+import { AppContext } from '../contexts/AppContext';
 
 
 export type RootStackParams = {
@@ -16,8 +18,26 @@ export type RootStackParams = {
 const Stack = createNativeStackNavigator<RootStackParams>();
 
 const AppNavigator = () => { 
+  const {isLoading, setIsLoading} = useContext(AppContext)
+  console.log('leybner',isLoading);
+  
   return (
     <>
+    {isLoading && (
+                <View
+                  style={{
+                    flex: 1,
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    position: 'absolute',
+                    backgroundColor: '#0000003b',
+                    zIndex: 1,
+                    height: '100%',
+                    width: '100%',
+                  }}>
+                  <ActivityIndicator size={60} color="#364989" />
+                </View>
+              )} 
       <Stack.Navigator
        screenOptions={{
         headerShown: false
@@ -27,7 +47,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Auth" component={AuthScreen} />
         <Stack.Screen name="DashBoard" component={DrawerDashBoard} />
       </Stack.Navigator>
-    </>
+    </> 
   );
 };
 

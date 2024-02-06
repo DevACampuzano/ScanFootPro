@@ -7,7 +7,7 @@ interface InputTextProps {
   onchageText: (value: any, key: string) => void;
   name: string;
   IconName?: string;
-  Type: string;
+  Type?: string;
   color: string;
   value: any;
 }
@@ -74,15 +74,16 @@ export const InputText = ({
           </View>
         ) : (
           <View style={style.input}>
-            <Icon name={IconName} size={30} color={color} />
+            {IconName && <Icon name={IconName} size={30} color={color} />}
             <TextInput
               style={{
                 height: 40,
-                width: '80%',
+                width: `${IconName ? '80%' : '100%'}`,
+                color: '#000'
               }}
               onChangeText={handleTextChange}
               value={text}
-              placeholder={name}
+              placeholder={name}  
               placeholderTextColor="#000"
             />
           </View>

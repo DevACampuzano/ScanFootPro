@@ -19,11 +19,11 @@ interface Props extends MaterialTopTabScreenProps<RootTopTabParams, 'login'> {}
 const Login = ({route, navigation}: Props) => {
   const {GoToDashBoard} = route.params;
   const {form, onChange, resetForm} = useForm({
-    email: 'keynerDElahoz@gmail.com',
-    password: '123456789',
+    email: 'keynerdelahoz@gmail.com',
+    password: 'Keyner1105',
   });
   console.log(form);
-  const {signIn} = useAuth();
+  const {signIn, getLocal} = useAuth();
   const height = useSharedValue(380);
   const animatedStyle = useAnimatedStyle(() => {
     return {
@@ -43,6 +43,9 @@ const Login = ({route, navigation}: Props) => {
   const animateHeight = (x: any) => {
     height.value = withTiming(x, {duration: 100});
   };
+  const Todash = () => {
+    GoToDashBoard()
+  }
 
   return (
     <DismissKeyboard>
@@ -80,7 +83,7 @@ const Login = ({route, navigation}: Props) => {
             title="Inicia sessión"
             height={60}
             border={20}
-            onclick={() => signIn(form)}
+            onclick={() => signIn(form, Todash)}
           />
            <View style={styles.sectionBotton}>
             <Text style={styles.parrafo}>¿Necesitas una cuenta?</Text>
@@ -104,13 +107,15 @@ const Login = ({route, navigation}: Props) => {
               color: '#000',
               fontWeight: 'bold',
             }}>
-            O inicia sesión con:{' '}
+            O inicia sesión con:
           </Text>
           <Butukon
             title="Inicia sessión"
             height={60}
             border={20}
-            onclick={() => () => console.log('hello desde aki')}
+            onclick={() => {
+              console.log('llega aki el local')
+            }}
             icon="logo-google"
           />
         </View>

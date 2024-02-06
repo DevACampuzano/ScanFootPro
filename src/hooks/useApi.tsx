@@ -119,7 +119,6 @@ export const useApi = () => {
       }
 
       const response = await axios(config);
-      console.log('response---', response)
       if (response.data.error) {
         setError(response.data.error);
         throw new Error(response.data.error);
@@ -134,16 +133,14 @@ export const useApi = () => {
         prevState.filter((item) => item !== `${type}__${endpoint}`)
       );
       if (error.response) {
-        // console.log(error.response.status)
-        // console.log(error.response.data.msg)
         if (error.response.status === 404 && error.response.data.msg === "Usuario no encontrado") {
           setError("Usuario no encontrado");
           throw new Error("Usuario no encontrado");
         } else {
-          if (error.response.data.error) {
+          if (error.response.data.msg) {
             if (
-              error.response.data.error === "INVALID_TOKEN" ||
-              error.response.data.error === "MISSING_TOKEN"
+              error.response.data.msg === "INVALID_TOKEN" ||
+              error.response.data.msg === "MISSING_TOKEN"
             ) {
               // AsyncStorage.clear();
               // cookie.remove("token");
@@ -151,8 +148,8 @@ export const useApi = () => {
               // window.location.replace("/login");
             }
               // Para otros errores, mantenemos el manejo genérico
-              setError(error.response.data.error);
-              throw new Error(error.response.data.error);
+              setError(error.response.data.msg);
+              throw new Error(error.response.data.msg);
           } else {
             setError(
               "Error interno del servidor, actualiza la página e intente nuevamente."

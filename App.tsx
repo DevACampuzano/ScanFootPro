@@ -1,13 +1,13 @@
 /* eslint-disable prettier/prettier */
-import {View, Text, StatusBar} from 'react-native';
-import React, {useEffect, useState} from 'react';
+import {View, Text, StatusBar, ActivityIndicator} from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
 import {NavigationContainer} from '@react-navigation/native';
 import AppNavigator from './src/navigations/StackAuth';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import AnimatedSplash from 'react-native-animated-splash-screen';
 import {LogBox} from 'react-native';
 import {check, PERMISSIONS, request} from 'react-native-permissions';
-import AppContext from './src/contexts/AppContext';
+import {AppContextProvider} from './src/contexts/AppContext';
 
 type Props = {};
 
@@ -17,13 +17,6 @@ const App = (props: Props) => {
     'Non-serializable values were found in the navigation state',
   ]);
   useEffect(() => {
-    // Simula un tiempo de carga
-    setTimeout(() => {
-      setIsLoaded(true);
-    }, 3000);
-  }, []);
-  useEffect(() => {
-    // Comprueba si ya se ha otorgado el permiso
     check(PERMISSIONS.ANDROID.CAMERA)
       .then(result => {
         switch (result) {
@@ -43,6 +36,9 @@ const App = (props: Props) => {
         // Ocurrió un error al comprobar el permiso
         console.log('Error al comprobar el permiso', error);
       });
+    setTimeout(() => {
+      setIsLoaded(true);
+    }, 3000);
   }, []);
   return (
     <>
@@ -60,9 +56,9 @@ const App = (props: Props) => {
         logoWidth={200}>
         <GestureHandlerRootView style={{flex: 1}}>
           <NavigationContainer>
-            <AppContext>
+            <AppContextProvider>
               <AppNavigator />
-            </AppContext>
+            </AppContextProvider>
           </NavigationContainer>
         </GestureHandlerRootView>
       </AnimatedSplash>
