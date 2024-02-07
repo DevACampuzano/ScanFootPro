@@ -14,7 +14,7 @@ const Escaner = ({navigation}: Props) => {
 
   const device = useCameraDevice('back')
   const format = useCameraFormat(device, [
-    { fps: 240 }
+    { fps: 30 }
   ])
  
  return (

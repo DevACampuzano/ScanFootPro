@@ -1,4 +1,4 @@
-const data = [
+export const data = [
   {
     id: 1,
     image: require('../assets/img/pie.png'),
@@ -19,4 +19,9 @@ const data = [
   },
 ];
 
-export default data;
+export interface ObjectFoot {
+  id: number;
+  name: string;
+  date: string;
+  img: string;
+}

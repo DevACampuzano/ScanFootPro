@@ -10,7 +10,7 @@ const styles = StyleSheet.create({
   title:{
     fontSize: normalize(30),
     color: Colors.primary,
-    fontWeight: 'bold',
+    fontWeight: 'bold', 
   }
 });
 

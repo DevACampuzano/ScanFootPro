@@ -2,16 +2,26 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import React, {useState, useEffect, useContext} from 'react';
 import {useApi} from './useApi';
 import {AppContext} from '../contexts/AppContext';
+import RNRestart from 'react-native-restart';
 
 const useAuth = () => {
   const {setIsLoading} = useContext(AppContext);
   const {loadApi, loadingApi} = useApi();
 
   const removeLocal = async () => {
+    setIsLoading(true)
     try {
-      return await AsyncStorage.clear();
+      console.log('si llega')
+      await AsyncStorage.clear();
+      setTimeout(() => {
+        setIsLoading(false)
+        RNRestart.Restart();
+      }, 1000);
     } catch (e) {
       // error reading value
+      setTimeout(() => {
+        setIsLoading(false)
+      }, 1000);
     }
   };
   // const getLocal = async () => {

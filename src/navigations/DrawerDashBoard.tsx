@@ -14,6 +14,7 @@ import Historial from '../screens/DashBoard/Historial';
 import Compartir from '../screens/DashBoard/Compartir';
 import {normalize} from '../theme/Styles';
 import Tutorial from '../screens/DashBoard/Tutorial';
+import useAuth from '../hooks/useAuth';
 
 export type DrawerDashBoardParams = {
   Escaner: any;
@@ -31,8 +32,10 @@ function CustomDrawerContent(props) {
   const sections = [
     {title: 'Section 1', data: ['Home', 'Escaner', 'Historial']},
     {title: 'Section 2', data: ['Compartir', 'Tutorial']},
+    {title: 'Section 3', data: ['Salir']},
     // Agrega aquí más secciones según sea necesario
   ];
+  const {removeLocal} = useAuth()
 
   return (
     <View style={styles.container}>
@@ -67,7 +70,13 @@ function CustomDrawerContent(props) {
             {item.data.map((subItem, subIndex) => (
               <TouchableOpacity
                 key={subIndex}
-                onPress={() => navigation.navigate(subItem)}
+                onPress={() => {
+                  if (subItem != 'Salir') {
+                    navigation.navigate(subItem);
+                  }else{
+                    removeLocal()
+                  }
+                }}
                 style={{
                   ...styles.button,
                   backgroundColor:
@@ -88,7 +97,7 @@ function CustomDrawerContent(props) {
                       : 'share-social-outline'
                   }
                   size={30}
-                  color={ 
+                  color={
                     state.routeNames[state.index] === subItem ? '#fff' : '#000'
                   }
                 />

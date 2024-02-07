@@ -5,18 +5,18 @@ import {TouchableOpacity} from 'react-native-gesture-handler';
 
 interface InputTextProps {
   onchageText: (value: any, key: string) => void;
-  name: string;
+  name?: string;
   IconName?: string;
   Type?: string;
-  color: string;
-  value: any;
+  color?: string;
+  value?: any;
 }
 export const InputText = ({
   onchageText,
   name,
   IconName,
   Type,
-  color,
+  color = '#364989',
   value,
 }: InputTextProps) => {
   const [text, setText] = useState(value);
@@ -78,7 +78,7 @@ export const InputText = ({
             <TextInput
               style={{
                 height: 40,
-                width: `${IconName ? '80%' : '100%'}`,
+                width: '100%',
                 color: '#000'
               }}
               onChangeText={handleTextChange}

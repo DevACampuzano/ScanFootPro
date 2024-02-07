@@ -11,7 +11,7 @@ import Animated, {
 import Pagination from '../../components/Pagination';
 import CustomButton from '../../components/CustomButton';
 import {SafeAreaView} from 'react-native-safe-area-context';
-import data from '../../interfaces/data';
+import {data} from '../../interfaces/data';
 const OnboardingScreen = () => {
   const {width: SCREEN_WIDTH} = useWindowDimensions();
   const flatListRef = useAnimatedRef(null);
