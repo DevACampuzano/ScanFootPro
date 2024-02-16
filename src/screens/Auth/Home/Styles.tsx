@@ -5,13 +5,10 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     paddingTop: 24,
-    // backgroundColor: '#ffdddd',
-    // justifyContent: 'space-between'
   },
   containerAuth: {
     justifyContent: 'center',
     alignItems: 'center',
-    // backgroundColor: '#ff5757',
     paddingVertical: 10,
     gap: 10
   },
@@ -19,7 +16,6 @@ const styles = StyleSheet.create({
     width: '100%',
     height: 480,
     borderColor: 'red',
-    // borderWidth: 1,
     marginTop: -80
   },
   title:{

@@ -5,7 +5,7 @@ import { ObjectFoot } from '../interfaces/data'
 const CardFoot = ({date, img, name}: ObjectFoot) => {
   return (
     <View style={style.Cart}>
-        <Image source={{uri: img}} style={{
+        <Image source={require('../assets/img/pata1.png')} style={{
             // borderColor: 'red',
             // borderWidth: 1,
             height: '90%',

@@ -52,8 +52,8 @@ const App = (props: Props) => {
         isLoaded={isLoaded}
         logoImage={require('./src/assets/img/SplashScreeen.png')}
         backgroundColor={'#effefd'}
-        logoHeight={200}
-        logoWidth={200}>
+        logoHeight={250}
+        logoWidth={250}>
         <GestureHandlerRootView style={{flex: 1}}>
           <NavigationContainer>
             <AppContextProvider>

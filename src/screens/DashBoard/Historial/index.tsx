@@ -123,7 +123,7 @@ const Historial = (props: Props) => {
           <CardFoot
             date={item.date}
             id={item.id}
-            img={item.img}
+            // img={item.img}
             name={item.name}
           />
         )}

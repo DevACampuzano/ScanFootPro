@@ -56,6 +56,7 @@ const OnboardingScreen = () => {
         width: SCREEN_WIDTH * 0.8,
         height: SCREEN_WIDTH * 0.8,
         transform: [{translateY: translateYAnimation}],
+        // backgroundColor: 'red'
       };
     });
     const textAnimationStyle = useAnimatedStyle(() => {

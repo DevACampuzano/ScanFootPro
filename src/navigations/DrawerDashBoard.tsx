@@ -15,6 +15,7 @@ import Compartir from '../screens/DashBoard/Compartir';
 import {normalize} from '../theme/Styles';
 import Tutorial from '../screens/DashBoard/Tutorial';
 import useAuth from '../hooks/useAuth';
+import AsyncStorage from '@react-native-async-storage/async-storage';
 
 export type DrawerDashBoardParams = {
   Escaner: any;
@@ -36,7 +37,11 @@ function CustomDrawerContent(props) {
     // Agrega aquí más secciones según sea necesario
   ];
   const {removeLocal} = useAuth()
-
+  // AsyncStorage.getItem('user').then(user => {
+  //   // You can use the user data here
+  //   console.log(user.user.name);
+  // });
+  
   return (
     <View style={styles.container}>
       <View
@@ -54,7 +59,6 @@ function CustomDrawerContent(props) {
           }}
           style={styles.image}
         />
-        {/* <Image source={require('./path-to-your-image.png')} style={styles.image} /> */}
         <Text style={styles.text}>Nombre de el usuario</Text>
       </View>
 
@@ -94,6 +98,8 @@ function CustomDrawerContent(props) {
                       ? 'time-outline'
                       : subItem === 'Tutorial'
                       ? 'information-circle-outline'
+                      : subItem === 'Salir'
+                      ? 'enter-outline'
                       : 'share-social-outline'
                   }
                   size={30}

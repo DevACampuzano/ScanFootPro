@@ -19,8 +19,8 @@ interface Props extends MaterialTopTabScreenProps<RootTopTabParams, 'login'> {}
 const Login = ({route, navigation}: Props) => {
   const {GoToDashBoard} = route.params;
   const {form, onChange, resetForm} = useForm({
-    email: 'keynerdelahoz@gmail.com',
-    password: 'Keyner1105',
+    email: 'keynerDElahoz@gmail.com',
+    password: '123456789Ko',
   });
   console.log(form);
   const {signIn, getLocal} = useAuth();
@@ -80,7 +80,7 @@ const Login = ({route, navigation}: Props) => {
             <Text style={{color: '#000'}}>¿Olvidaste la contraseña?</Text>
           </TouchableOpacity>
           <Butukon
-            title="Inicia sessión"
+            title="Inicia sesión"
             height={60}
             border={20}
             onclick={() => signIn(form, Todash)}

@@ -91,7 +91,7 @@ const Register = ({navigation}: Props) => {
           />
 
           <Butukon
-            title="Inicia sessión"
+            title="Crear cuenta"
             height={60}
             border={20}
             onclick={() => signup(form, goLogin)}
