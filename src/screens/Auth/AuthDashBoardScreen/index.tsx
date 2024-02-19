@@ -28,6 +28,9 @@ const AuthScreen = ({navigation}: Props) => {
        routes: [{ name: 'DashBoard' }],
     });
    };
+  const GoToForgotPassword = () => {
+    navigation.navigate('ForgotPassword')
+   };
    
   return (
     <>
@@ -36,7 +39,7 @@ const AuthScreen = ({navigation}: Props) => {
         <Animated.View style={[styles.containerAuth, animatedStyles]}>
           <Text style={styles.title}>Bienvenido</Text>
         </Animated.View>
-        <TopTabNavigatorAuth GoToDashBoard={GoToDashBoard}/>
+        <TopTabNavigatorAuth GoToDashBoard={GoToDashBoard} GoToForgotPassword={GoToForgotPassword}/>
       </View>
     </>
   );

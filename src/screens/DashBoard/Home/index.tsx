@@ -4,9 +4,16 @@ import styles from './Styles';
 import {DrawerScreenProps} from '@react-navigation/drawer';
 import {DrawerDashBoardParams} from '../../../navigations/DrawerDashBoard';
 import Butukon from '../../../components/Butukon';
+import Toast from 'react-native-toast-message';
 
 interface Props extends DrawerScreenProps<DrawerDashBoardParams, 'Home'> {}
 const DrawerHome = ({navigation}: Props) => {
+  const showToast = () => {
+    Toast.show({
+      type: 'success',
+      text1: 'Hello',
+    });
+  }
   return (
     <>
       <StatusBar
@@ -52,6 +59,14 @@ const DrawerHome = ({navigation}: Props) => {
           onclick={() => navigation.navigate('Historial')}
           icon='newspaper-outline'
         />
+        <Butukon
+          title="Historial"
+          height={100}
+          border={20}
+          onclick={() => showToast()}
+          icon='newspaper-outline'
+        />
+
       </View>
     </>
   );

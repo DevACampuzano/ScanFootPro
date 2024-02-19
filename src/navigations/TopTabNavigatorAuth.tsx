@@ -9,8 +9,7 @@ export type RootTopTabParams = {
 
 const Tab = createMaterialTopTabNavigator<RootTopTabParams>();
 
-function TopTabNavigatorAuth({GoToDashBoard}: any) {
-  console.log(GoToDashBoard)
+function TopTabNavigatorAuth({GoToDashBoard, GoToForgotPassword}: any) {
   return (
     <Tab.Navigator
       initialRouteName="Feed"
@@ -25,7 +24,7 @@ function TopTabNavigatorAuth({GoToDashBoard}: any) {
         name="login"
         component={Login}
         options={{tabBarLabel: 'Inicia sesión'}}
-        initialParams={{ GoToDashBoard: GoToDashBoard }}
+        initialParams={{ GoToDashBoard: GoToDashBoard, GoToForgotPassword: GoToForgotPassword }}
       />
       <Tab.Screen
         name="register"

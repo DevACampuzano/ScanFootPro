@@ -3,6 +3,7 @@ import React, {useState, useEffect, useContext} from 'react';
 import {useApi} from './useApi';
 import {AppContext} from '../contexts/AppContext';
 import RNRestart from 'react-native-restart';
+import Toast from 'react-native-toast-message';
 
 const useAuth = () => {
   const {setIsLoading} = useContext(AppContext);
@@ -50,6 +51,10 @@ const useAuth = () => {
       });
       console.log('eijvli---',resp);
       console.log(resp.data);
+      Toast.show({
+        type: 'success',
+        text1: 'Bienvenido 👋',
+      });
       // console.log(resp.config.response)
       try {
         setIsLoading(false);

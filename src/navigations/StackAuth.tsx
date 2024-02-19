@@ -7,12 +7,14 @@ import AuthScreen from '../screens/Auth/AuthDashBoardScreen';
 import DrawerDashBoard from './DrawerDashBoard';
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
+import ForgotPassword from '../screens/ForgotPassword';
 
 
 export type RootStackParams = {
   Auth: any;
   Home: any;
   DashBoard: any;
+  ForgotPassword: any;
 };
 
 const Stack = createNativeStackNavigator<RootStackParams>();
@@ -20,7 +22,6 @@ const Stack = createNativeStackNavigator<RootStackParams>();
 const AppNavigator = () => { 
   const {isLoading, setIsLoading} = useContext(AppContext)
   console.log('leybner',isLoading);
-  
   return (
     <>
     {isLoading && (
@@ -46,6 +47,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Home" component={HomeScreen} />
         <Stack.Screen name="Auth" component={AuthScreen} />
         <Stack.Screen name="DashBoard" component={DrawerDashBoard} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
       </Stack.Navigator>
     </> 
   );

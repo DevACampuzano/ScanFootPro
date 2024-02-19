@@ -17,9 +17,9 @@ import Animated, {
 interface Props extends MaterialTopTabScreenProps<RootTopTabParams, 'login'> {}
 
 const Login = ({route, navigation}: Props) => {
-  const {GoToDashBoard} = route.params;
+  const {GoToDashBoard, GoToForgotPassword} = route.params;
   const {form, onChange, resetForm} = useForm({
-    email: 'keynerDElahoz@gmail.com',
+    email: 'keyerdelahozsteam@gmail.com',
     password: '123456789Ko',
   });
   console.log(form);
@@ -76,7 +76,7 @@ const Login = ({route, navigation}: Props) => {
             color="#364989"
             value={form.password}
           />
-          <TouchableOpacity activeOpacity={0.9} onPress={() => ToastAndroid.show('Apartado en fase de desarrollo', ToastAndroid.SHORT)}>
+          <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('')}>
             <Text style={{color: '#000'}}>¿Olvidaste la contraseña?</Text>
           </TouchableOpacity>
           <Butukon
@@ -110,7 +110,7 @@ const Login = ({route, navigation}: Props) => {
             O inicia sesión con:
           </Text>
           <Butukon
-            title="Inicia sessión"
+            title="Inicia sesión"
             height={60}
             border={20}
             onclick={() => {

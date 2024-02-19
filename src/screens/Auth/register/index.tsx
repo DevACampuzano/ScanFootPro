@@ -69,7 +69,7 @@ const Register = ({navigation}: Props) => {
         />
         <Animated.View style={animatedStyle}>
           <InputText
-            onchageText={e => onChange(e, 'password')}
+            onchageText={e => onChange(e, 'name')}
             name="name"
             color="#364989"
             value={form.name}
@@ -102,7 +102,7 @@ const Register = ({navigation}: Props) => {
               onPress={() => navigation.navigate('login')}
               activeOpacity={0.9}>
               <Text style={{...styles.parrafo, color: '#000'}}>
-                Inicia sessión
+                Inicia sesión
               </Text>
             </TouchableOpacity>
           </View>
@@ -115,15 +115,9 @@ const Register = ({navigation}: Props) => {
             alignItems: 'center',
             gap: 20,
           }}>
-          <Text
-            style={{
-              color: '#000',
-              fontWeight: 'bold',
-            }}>
-            O inicia sesión con:{' '}
-          </Text>
+        
           <Butukon
-            title="Inicia sessión"
+            title="Continua con Google"
             height={60}
             border={20}
             onclick={() => console.log('helllo desde Gogkle')}

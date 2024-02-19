@@ -8,6 +8,7 @@ import AnimatedSplash from 'react-native-animated-splash-screen';
 import {LogBox} from 'react-native';
 import {check, PERMISSIONS, request} from 'react-native-permissions';
 import {AppContextProvider} from './src/contexts/AppContext';
+import Toast, { BaseToast, ErrorToast } from 'react-native-toast-message';
 
 type Props = {};
 
@@ -40,6 +41,40 @@ const App = (props: Props) => {
       setIsLoaded(true);
     }, 3000);
   }, []);
+
+  const toastConfig = {
+    /*
+      Overwrite 'success' type,
+      by modifying the existing `BaseToast` component
+    */
+    success: (props) => (
+      <BaseToast
+        {...props}
+        style={{ borderLeftColor: '#009DA6' }}
+        contentContainerStyle={{ paddingHorizontal: 15 }}
+        text1Style={{
+          fontSize: 18,
+          fontWeight: '400'
+        }}
+      />
+    ),
+    /*
+      Overwrite 'error' type,
+      by modifying the existing `ErrorToast` component
+    */
+    error: (props) => (
+      <ErrorToast
+        {...props}
+        text1Style={{
+          fontSize: 17
+        }}
+        text2Style={{
+          fontSize: 15
+        }}
+      />
+    ),
+  };
+
   return (
     <>
       <StatusBar
@@ -57,13 +92,15 @@ const App = (props: Props) => {
         <GestureHandlerRootView style={{flex: 1}}>
           <NavigationContainer>
             <AppContextProvider>
-              <AppNavigator />
+                <AppNavigator />
             </AppContextProvider>
           </NavigationContainer>
-        </GestureHandlerRootView>
+        </GestureHandlerRootView>   
       </AnimatedSplash>
+      <Toast config={toastConfig} />
     </>
   );
 };
 
 export default App;
+ 
