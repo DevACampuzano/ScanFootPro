@@ -74,19 +74,19 @@ export const InputText = ({
           </View>
         ) : (
           <View style={style.input}>
-            {IconName && <Icon name={IconName} size={30} color={color} />}
-            <TextInput
-              style={{
-                height: 40,
-                width: '100%',
-                color: '#000'
-              }}
-              onChangeText={handleTextChange}
-              value={text}
-              placeholder={name}  
-              placeholderTextColor="#000"
-            />
-          </View>
+          <Icon name={IconName} size={30} color={color} />
+          <TextInput
+            style={{
+              height: 40,
+              width: '87%',
+              color: '#333'
+            }}
+            onChangeText={handleTextChange}
+            value={text}
+            placeholder={name}
+            placeholderTextColor="#000" 
+          />
+        </View>
         )}
       </View>
     </>

@@ -22,11 +22,39 @@ const OnboardingScreen = () => {
     flatListIndex.value = viewableItems[0].index;
   };
 
+  // const onScroll = useAnimatedScrollHandler({
+  //   onScroll: event => {
+  //     x.value = event.contentOffset.x;
+  //   },
+  // });
+
   const onScroll = useAnimatedScrollHandler({
     onScroll: event => {
-      x.value = event.contentOffset.x;
+      // Obtén el desplazamiento actual
+      const currentScrollX = event.contentOffset.x;
+      
+      // Define el límite inferior y superior para el desplazamiento
+      const minScrollX =  0; // Límite inferior, por ejemplo, la posición inicial
+      const maxScrollX = (data.length -  1) * SCREEN_WIDTH; // Límite superior, la última posición
+  
+      // Verifica si el desplazamiento actual está dentro de los límites permitidos
+      if (currentScrollX < minScrollX) {
+        // Si el desplazamiento es menor que el límite inferior, establece el desplazamiento a la posición inicial
+        x.value = minScrollX;
+        // Opcional: Mueve el FlatList a la posición inicial
+        flatListRef.current.scrollToOffset({ offset: minScrollX, animated: true });
+      } else if (currentScrollX > maxScrollX) {
+        // Si el desplazamiento es mayor que el límite superior, establece el desplazamiento a la última posición
+        x.value = maxScrollX;
+        // Opcional: Mueve el FlatList a la última posición
+        flatListRef.current.scrollToOffset({ offset: maxScrollX, animated: true });
+      } else {
+        // Si el desplazamiento está dentro de los límites, actualiza el valor de x
+        x.value = currentScrollX;
+      }
     },
   });
+  
 
   // eslint-disable-next-line react/no-unstable-nested-components
   const RenderItem = ({item, index}) => {

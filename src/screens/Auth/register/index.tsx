@@ -28,9 +28,9 @@ const Register = ({navigation}: Props) => {
   const {signup} = useAuth()
   const {setIsLoading} = useContext(AppContext)
   const {form, onChange, resetForm} = useForm({
-    name: 'Keyner De la Hoz',
-    email: 'keynerDElahoz@gmail.com',
-    password: '123456789',
+    name: 'Kener dela',
+    email: 'keyerdelahozsteam@gmail.com',
+    password: '123456789Ko',
   });
   console.log(form);
   const height = useSharedValue(380);
@@ -72,6 +72,7 @@ const Register = ({navigation}: Props) => {
             onchageText={e => onChange(e, 'name')}
             name="name"
             color="#364989"
+            IconName='person-outline'
             value={form.name}
           />
           <InputText
@@ -115,14 +116,14 @@ const Register = ({navigation}: Props) => {
             alignItems: 'center',
             gap: 20,
           }}>
-        
+{/*         
           <Butukon
             title="Continua con Google"
             height={60}
             border={20}
             onclick={() => console.log('helllo desde Gogkle')}
             icon="logo-google"
-          />
+          /> */}
         </View>
       </ScrollView>
     </DismissKeyboard>

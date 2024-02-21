@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Image, FlatList } from 'react-native';
+import { View, Text, Image } from 'react-native';
 import styles from './Styles';
 import { DrawerScreenProps } from '@react-navigation/drawer';
 import { DrawerDashBoardParams } from '../../../navigations/DrawerDashBoard';
@@ -7,6 +7,7 @@ import {InputText} from '../../../components/InputText';
 import {DismissKeyboard} from '../../../components/DismissKeyboard';
 import { ObjectFoot } from '../../../interfaces/data';
 import CardFoot from '../../../components/CardFoot';
+import { FlatList } from 'react-native-gesture-handler';
 
 interface Props extends DrawerScreenProps<DrawerDashBoardParams, 'Home'> {}
 

@@ -11,7 +11,7 @@ const DrawerHome = ({navigation}: Props) => {
   const showToast = () => {
     Toast.show({
       type: 'success',
-      text1: 'Hello',
+      text1: 'Revisa tu correo electrónico y activa tu cuenta',
     });
   }
   return (
@@ -59,13 +59,13 @@ const DrawerHome = ({navigation}: Props) => {
           onclick={() => navigation.navigate('Historial')}
           icon='newspaper-outline'
         />
-        <Butukon
+        {/* <Butukon
           title="Historial"
           height={100}
           border={20}
           onclick={() => showToast()}
           icon='newspaper-outline'
-        />
+        /> */}
 
       </View>
     </>

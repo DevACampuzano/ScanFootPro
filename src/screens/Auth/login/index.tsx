@@ -76,9 +76,9 @@ const Login = ({route, navigation}: Props) => {
             color="#364989"
             value={form.password}
           />
-          <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('')}>
+          {/* <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('')}>
             <Text style={{color: '#000'}}>¿Olvidaste la contraseña?</Text>
-          </TouchableOpacity>
+          </TouchableOpacity> */}
           <Butukon
             title="Inicia sesión"
             height={60}
@@ -102,14 +102,14 @@ const Login = ({route, navigation}: Props) => {
             alignItems: 'center',
             gap: 20,
           }}>
-          <Text
+          {/* <Text
             style={{
               color: '#000',
               fontWeight: 'bold',
             }}>
             O inicia sesión con:
-          </Text>
-          <Butukon
+          </Text> */}
+          {/* <Butukon
             title="Inicia sesión"
             height={60}
             border={20}
@@ -117,7 +117,7 @@ const Login = ({route, navigation}: Props) => {
               console.log('llega aki el local')
             }}
             icon="logo-google"
-          />
+          /> */}
         </View>
       </ScrollView>
     </DismissKeyboard>

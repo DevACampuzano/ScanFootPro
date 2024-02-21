@@ -68,6 +68,10 @@ const useAuth = () => {
     } catch (error) {
       setIsLoading(false);
       console.log('error----', error);
+      Toast.show({
+        type: 'error',
+        text1: `${error}`,
+      });
     }
   };
 
@@ -82,9 +86,17 @@ const useAuth = () => {
       console.log(resp.data);
         GoToDashBoard();
         setIsLoading(false);
+        Toast.show({
+          type: 'success',
+          text1: 'Registro Exitoso, revisa la bandeja de tu correo electrónico y activa tu cuenta',
+        });
     } catch (error) {
       setIsLoading(false);
-      console.log('error----', error);
+      // console.log('error----', error[0].Error);
+      Toast.show({
+        type: 'error',
+        text1: `${error}`,
+      });
     }
   };
 

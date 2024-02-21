@@ -53,7 +53,7 @@ const App = (props: Props) => {
         style={{ borderLeftColor: '#009DA6' }}
         contentContainerStyle={{ paddingHorizontal: 15 }}
         text1Style={{
-          fontSize: 18,
+          fontSize: 14,
           fontWeight: '400'
         }}
       />
@@ -66,10 +66,12 @@ const App = (props: Props) => {
       <ErrorToast
         {...props}
         text1Style={{
-          fontSize: 17
+          fontSize: 14,
+          fontWeight: '400'
         }}
         text2Style={{
-          fontSize: 15
+           fontSize: 13,
+          fontWeight: '400'
         }}
       />
     ),
