@@ -16,7 +16,7 @@ import {normalize} from '../theme/Styles';
 import Tutorial from '../screens/DashBoard/Tutorial';
 import useAuth from '../hooks/useAuth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useEffect, useState } from 'react';
+import {useEffect, useState} from 'react';
 
 export type DrawerDashBoardParams = {
   Escaner: any;
@@ -30,7 +30,8 @@ const Drawer = createDrawerNavigator<DrawerDashBoardParams>();
 
 function CustomDrawerContent(props) {
   const {state, navigation, ...rest} = props;
-  const [userName, setUserName] = useState('')
+  const [userName, setUserName] = useState('');
+  const [userPhoto, setUserPhoto] = useState('');
 
   const sections = [
     {title: 'Section 1', data: ['Home', 'Escaner', 'Historial']},
@@ -38,15 +39,16 @@ function CustomDrawerContent(props) {
     {title: 'Section 3', data: ['Salir']},
     // Agrega aquí más secciones según sea necesario
   ];
-  const {removeLocal} = useAuth()
+  const {removeLocal} = useAuth();
   useEffect(() => {
-    AsyncStorage.getItem('user').then((user:any) => {
+    AsyncStorage.getItem('user').then((user: any) => {
       // You can use the user data here
-      setUserName(JSON.parse(user).user.name)
-    });
-  }, [])
-  
-  
+      console.log(user);
+      setUserName(JSON.parse(user).user.name);
+      setUserPhoto(JSON.parse(user).user.photo);
+    }); 
+  }, []);
+  console.log(userPhoto)
   return (
     <View style={styles.container}>
       <View
@@ -58,10 +60,7 @@ function CustomDrawerContent(props) {
           paddingHorizontal: 20,
           marginTop: 60,
         }}>
-        <Image
-          source={require('../assets/img/10.jpg')}
-          style={styles.image}
-        />
+        <Image source={userPhoto ? {uri: userPhoto} : require('../assets/img/10.jpg')} style={styles.image} />
         <Text style={styles.text}>{userName}</Text>
       </View>
 
@@ -80,8 +79,8 @@ function CustomDrawerContent(props) {
                 onPress={() => {
                   if (subItem != 'Salir') {
                     navigation.navigate(subItem);
-                  }else{
-                    removeLocal()
+                  } else {
+                    removeLocal();
                   }
                 }}
                 style={{

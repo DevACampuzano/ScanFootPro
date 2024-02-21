@@ -4,7 +4,7 @@ import {
   Image,
   Keyboard,
 } from 'react-native';
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import Butukon from '../../../components/Butukon';
 import styles from './Styles';
 import {ScrollView, TouchableOpacity} from 'react-native-gesture-handler';
@@ -21,6 +21,7 @@ import {InputText} from '../../../components/InputText';
 import { useContext } from 'react';
 import { AppContext } from '../../../contexts/AppContext';
 import useAuth from '../../../hooks/useAuth';
+import Toast from 'react-native-toast-message';
 
 interface Props extends MaterialTopTabScreenProps<RootTopTabParams, 'login'> {}
 
@@ -32,11 +33,6 @@ const Register = ({navigation}: Props) => {
     email: '',
     password: '',
   });
-  // const {form, onChange, resetForm} = useForm({
-  //   name: 'Kener dela',
-  //   email: 'keyerdelahozsteam@gmail.com',
-  //   password: '123456789Ko',
-  // });
   console.log(form);
   const height = useSharedValue(380);
   const animatedStyle = useAnimatedStyle(() => {
@@ -59,17 +55,18 @@ const Register = ({navigation}: Props) => {
   const goLogin = () => {
     navigation.navigate('login')
   }
+  
   return (
     <DismissKeyboard>
       <ScrollView contentContainerStyle={styles.container}>
         <Image
-          source={require('../../../assets/img/pie.png')}
+          source={require('../../../assets/img/fondo1.3(Photoshop).png')}
           style={{
             position: 'absolute',
-            top: -110,
-            opacity: 0.3,
+            top: -0,
+            opacity: 0.4,
             width: '100%',
-            height: 500,
+            height: '110%',
           }}
         />
         <Animated.View style={animatedStyle}>
@@ -95,6 +92,24 @@ const Register = ({navigation}: Props) => {
             color="#364989"
             value={form.password}
           />
+          <Text style={{
+            color: '#000',
+            textAlign: 'left',
+            // backgroundColor: 'red',
+            width: '80%'
+          }}>-La contraseña debe de ser minimo de 8 caracteres</Text>
+          <Text style={{
+            color: '#000',
+            textAlign: 'left',
+            // backgroundColor: 'red',
+            width: '80%'
+          }}>-Al menos una mayuscula</Text>
+          <Text style={{
+            color: '#000',
+            textAlign: 'left',
+            // backgroundColor: 'red',
+            width: '80%'
+          }}>-Al menos 1 numero</Text>
 
           <Butukon
             title="Crear cuenta"
