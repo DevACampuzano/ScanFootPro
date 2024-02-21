@@ -19,9 +19,13 @@ interface Props extends MaterialTopTabScreenProps<RootTopTabParams, 'login'> {}
 const Login = ({route, navigation}: Props) => {
   const {GoToDashBoard, GoToForgotPassword} = route.params;
   const {form, onChange, resetForm} = useForm({
-    email: 'keyerdelahozsteam@gmail.com',
-    password: '123456789Ko',
+    email: '',
+    password: '',
   });
+  // const {form, onChange, resetForm} = useForm({
+  //   email: 'keyerdelahozsteam@gmail.com',
+  //   password: '123456789Ko',
+  // });
   console.log(form);
   const {signIn, getLocal} = useAuth();
   const height = useSharedValue(380);
@@ -63,14 +67,14 @@ const Login = ({route, navigation}: Props) => {
         <Animated.View style={animatedStyle}>
           <InputText
             onchageText={e => onChange(e, 'email')}
-            name="Email"
+            name="Correo"
             Type="Email"
             color="#364989"
             value={form.email}
           />
           <InputText
             onchageText={e => onChange(e, 'password')}
-            name="Password"
+            name="Contraseña"
             IconName="mail-outline"
             Type="Password"
             color="#364989"

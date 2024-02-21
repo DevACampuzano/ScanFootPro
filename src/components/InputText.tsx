@@ -60,7 +60,7 @@ export const InputText = ({
               }}
               onChangeText={handleTextChange}
               value={text}
-              placeholder="Password"
+              placeholder={name}
               placeholderTextColor="#000" 
               secureTextEntry={Password}
             />

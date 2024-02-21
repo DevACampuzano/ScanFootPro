@@ -28,10 +28,15 @@ const Register = ({navigation}: Props) => {
   const {signup} = useAuth()
   const {setIsLoading} = useContext(AppContext)
   const {form, onChange, resetForm} = useForm({
-    name: 'Kener dela',
-    email: 'keyerdelahozsteam@gmail.com',
-    password: '123456789Ko',
+    name: '',
+    email: '',
+    password: '',
   });
+  // const {form, onChange, resetForm} = useForm({
+  //   name: 'Kener dela',
+  //   email: 'keyerdelahozsteam@gmail.com',
+  //   password: '123456789Ko',
+  // });
   console.log(form);
   const height = useSharedValue(380);
   const animatedStyle = useAnimatedStyle(() => {
@@ -70,21 +75,21 @@ const Register = ({navigation}: Props) => {
         <Animated.View style={animatedStyle}>
           <InputText
             onchageText={e => onChange(e, 'name')}
-            name="name"
+            name="Nombre"
             color="#364989"
             IconName='person-outline'
             value={form.name}
           />
           <InputText
             onchageText={e => onChange(e, 'email')}
-            name="Email"
+            name="Correo"
             Type="Email"
             color="#364989"
             value={form.email}
           />
           <InputText
             onchageText={e => onChange(e, 'password')}
-            name="Password"
+            name="Contraseña"
             IconName="mail-outline"
             Type="Password"
             color="#364989"

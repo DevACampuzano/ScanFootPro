@@ -16,6 +16,7 @@ import {normalize} from '../theme/Styles';
 import Tutorial from '../screens/DashBoard/Tutorial';
 import useAuth from '../hooks/useAuth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import { useEffect, useState } from 'react';
 
 export type DrawerDashBoardParams = {
   Escaner: any;
@@ -29,6 +30,7 @@ const Drawer = createDrawerNavigator<DrawerDashBoardParams>();
 
 function CustomDrawerContent(props) {
   const {state, navigation, ...rest} = props;
+  const [userName, setUserName] = useState('')
 
   const sections = [
     {title: 'Section 1', data: ['Home', 'Escaner', 'Historial']},
@@ -37,10 +39,13 @@ function CustomDrawerContent(props) {
     // Agrega aquí más secciones según sea necesario
   ];
   const {removeLocal} = useAuth()
-  // AsyncStorage.getItem('user').then(user => {
-  //   // You can use the user data here
-  //   console.log(user.user.name);
-  // });
+  useEffect(() => {
+    AsyncStorage.getItem('user').then((user:any) => {
+      // You can use the user data here
+      setUserName(JSON.parse(user).user.name)
+    });
+  }, [])
+  
   
   return (
     <View style={styles.container}>
@@ -54,12 +59,10 @@ function CustomDrawerContent(props) {
           marginTop: 60,
         }}>
         <Image
-          source={{
-            uri: 'https://images.pexels.com/photos/762080/pexels-photo-762080.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-          }}
+          source={require('../assets/img/10.jpg')}
           style={styles.image}
         />
-        <Text style={styles.text}>Nombre de el usuario</Text>
+        <Text style={styles.text}>{userName}</Text>
       </View>
 
       <FlatList
