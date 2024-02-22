@@ -7,7 +7,8 @@ import AuthScreen from '../screens/Auth/AuthDashBoardScreen';
 import DrawerDashBoard from './DrawerDashBoard';
 import { useContext } from 'react';
 import { AppContext } from '../contexts/AppContext';
-import ForgotPassword from '../screens/ForgotPassword';
+import ForgotPassword from '../screens/Auth/VerificationView';
+import VerificationView from '../screens/Auth/VerificationView';
 
 
 export type RootStackParams = {
@@ -15,6 +16,7 @@ export type RootStackParams = {
   Home: any;
   DashBoard: any;
   ForgotPassword: any;
+  VerificationView: any;
 };
 
 const Stack = createNativeStackNavigator<RootStackParams>();
@@ -48,6 +50,7 @@ const AppNavigator = () => {
         <Stack.Screen name="Auth" component={AuthScreen} />
         <Stack.Screen name="DashBoard" component={DrawerDashBoard} />
         <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
+        <Stack.Screen name="VerificationView" component={VerificationView} />
       </Stack.Navigator>
     </> 
   );

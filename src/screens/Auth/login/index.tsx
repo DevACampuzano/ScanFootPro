@@ -22,11 +22,7 @@ import Animated, {
   useAnimatedStyle,
   withTiming,
 } from 'react-native-reanimated';
-import {
-  GoogleSignin,
-  statusCodes,
-} from '@react-native-google-signin/google-signin';
-import AsyncStorage from '@react-native-async-storage/async-storage';
+
 
 interface Props extends MaterialTopTabScreenProps<RootTopTabParams, 'login'> {}
 
@@ -37,11 +33,6 @@ const Login = ({route, navigation}: Props) => {
     email: '',
     password: '',
   });
-  // const {form, onChange, resetForm} = useForm({
-  //   email: 'keyerdelahozsteam@gmail.com',
-  //   password: '123456789Ko',
-  // });
-  console.log(form);
   const {signIn, getLocal, SigInGoolge} = useAuth();
   const height = useSharedValue(380);
   const animatedStyle = useAnimatedStyle(() => {
@@ -65,48 +56,9 @@ const Login = ({route, navigation}: Props) => {
   const Todash = () => {
     GoToDashBoard();
   };
-  // useEffect(() => {
-  //   GoogleSignin.configure({
-  //     androidClientId: '558743903976-t4ttf9jgjjvc0g4g4cru8scjs277a2ho.apps.googleusercontent.com'
-  //   });
-  // }, [])
-
-  // const signInGoogle = async () => {
-  //   try {
-  //     await GoogleSignin.hasPlayServices();
-  //     const userInfo = await GoogleSignin.signIn();
-
-  //     // Validar la información del usuario
-  //     if (!userInfo || !userInfo.user) {
-  //       console.error('No se pudo obtener la información del usuario');
-  //       return;
-  //     }
-
-  //     // Aquí puedes realizar cualquier validación adicional que necesites
-  //     // Por ejemplo, verificar que el usuario tenga un correo electrónico válido
-  //     // const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-  //     // if (!emailRegex.test(userInfo.user.email)) {
-  //     //   console.error('Correo electrónico inválido');
-  //     //   return;
-  //     // }
-
-  //     // Si todo está bien, guarda la información del usuario
-  //     setUserGoogle({ userInfo });
-  //   } catch (error) {
-  //     if (error.code === statusCodes.SIGN_IN_CANCELLED) {
-  //       // user cancelled the login flow
-  //     } else if (error.code === statusCodes.IN_PROGRESS) {
-  //       // operation (e.g. sign in) is in progress already
-  //     } else if (error.code === statusCodes.PLAY_SERVICES_NOT_AVAILABLE) {
-  //       // play services not available or outdated
-  //     } else {
-  //       // some other error happened
-  //     }
-  //   }
-  // };
-
+  
   return (
-    <DismissKeyboard>
+    // <DismissKeyboard>
       <ScrollView contentContainerStyle={styles.container}>
         <Image
           source={require('../../../assets/img/fondo1.2.jpg')}
@@ -134,9 +86,9 @@ const Login = ({route, navigation}: Props) => {
             color="#364989"
             value={form.password}
           />
-          {/* <TouchableOpacity activeOpacity={0.9} onPress={() => navigation.navigate('')}>
+          <TouchableOpacity activeOpacity={0.9} onPress={() => GoToForgotPassword()}>
             <Text style={{color: '#000'}}>¿Olvidaste la contraseña?</Text>
-          </TouchableOpacity> */}
+          </TouchableOpacity>
           <Butukon
             title="Inicia sesión"
             height={60}
@@ -176,7 +128,6 @@ const Login = ({route, navigation}: Props) => {
           />
         </View>
       </ScrollView>
-    </DismissKeyboard>
   );
 };
 

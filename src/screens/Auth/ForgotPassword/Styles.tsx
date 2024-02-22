@@ -1,13 +1,15 @@
 import {StyleSheet} from 'react-native';
-import { Colors, normalize } from '../../../theme/Styles';
+import { normalize } from '../../../theme/Styles';
+import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     // backgroundColor: '#ffdddd',
-    justifyContent: 'center',
+    // justifyContent: 'center',
     alignItems: 'center',
-    gap: 10
+    paddingVertical: 100,
+    gap: 20
   },
   containerAuth: {
     justifyContent: 'center',
@@ -24,9 +26,16 @@ const styles = StyleSheet.create({
     marginTop: -100
   },
   title:{
-    fontSize: normalize(50),
+    fontSize: normalize(33),
     color: Colors.primary,
     fontWeight: 'bold',
+    // backgroundColor: 'red',
+    width: '80%'
+  },
+  text:{
+    fontSize: normalize(20),
+    color: '#000',
+    width: '80%'
   }
 });
 

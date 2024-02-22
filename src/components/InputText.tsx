@@ -33,7 +33,7 @@ export const InputText = ({
   return (
     <>
       <View style={style.container}>
-        <View style={style.input}>
+        <View style={{...style.input, borderBottomColor: color,}}>
           <Icon
             name={
               Type === 'Email'
@@ -74,7 +74,6 @@ const style = StyleSheet.create({
   input: {
     width: '80%',
     flexDirection: 'row',
-    borderBottomColor: '#364989',
     // backgroundColor: 'white',
     borderWidth: 1,
     borderTopColor: 'transparent',
