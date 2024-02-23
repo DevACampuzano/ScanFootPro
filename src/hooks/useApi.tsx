@@ -20,30 +20,6 @@ interface ILoadApiProps {
   file?: boolean;
 }
 
-const setLocal = async (value: string, key: string) => {
-  try {
-    await AsyncStorage.setItem(key, value);
-  } catch (e) {
-    // saving error
-  }
-};
-
-const getLocal = async (key: string) => {
-  try {
-    return await AsyncStorage.getItem(key);
-  } catch (e) {
-    // error reading value
-  }
-};
-
-const removeLocal = async () => {
-  try {
-    return await AsyncStorage.clear();
-  } catch (e) {
-    // error reading value
-  }
-};
-
 export const useApi = () => {
   const [loadingApi, setLoading] = useState<string[]>([]);
   const [loadedApi, setLoadedApi] = useState<string[]>([]);

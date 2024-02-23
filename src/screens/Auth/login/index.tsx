@@ -65,7 +65,7 @@ const Login = ({route, navigation}: Props) => {
           style={{
             position: 'absolute',
             top: -110,
-            opacity: 0.3,
+            opacity: 0.1,
             width: '100%',
             height: 450,
           }}

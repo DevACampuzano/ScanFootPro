@@ -10,6 +10,7 @@ interface InputTextProps {
   Type?: string;
   color?: string;
   value?: any;
+  maxLength?: number;
 }
 export const InputText = ({
   onchageText,
@@ -18,6 +19,7 @@ export const InputText = ({
   Type,
   color = '#364989',
   value,
+  maxLength = 1000,
 }: InputTextProps) => {
   const [text, setText] = useState(value);
   const [Password, setPassword] = useState(true);
@@ -51,6 +53,7 @@ export const InputText = ({
               width: `${Type === 'Password' ? '75%' : '87%'}`,
               color: '#333',
             }}
+            maxLength={maxLength}
             onChangeText={handleTextChange}
             value={text}
             placeholder={name}
@@ -72,7 +75,7 @@ const style = StyleSheet.create({
     // backgroundColor: 'red',
   },
   input: {
-    width: '80%',
+    width: '90%',
     flexDirection: 'row',
     // backgroundColor: 'white',
     borderWidth: 1,

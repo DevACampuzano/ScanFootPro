@@ -1,5 +1,5 @@
 //import liraries
-import React, {Component, useContext, useEffect} from 'react';
+import React, {Component, useContext, useEffect, useState} from 'react';
 import {View, Text, StyleSheet, StatusBar, Image, ImageBackground, KeyboardAvoidingView, Dimensions} from 'react-native';
 import styles from './Styles';
 import Butukon from '../../../components/Butukon';
@@ -8,25 +8,27 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {InputText} from '../../../components/InputText';
 import BtnBack from '../../../components/BtnBack';
 import { DismissKeyboard } from '../../../components/DismissKeyboard';
+import NavigationBarColor from 'react-native-navigation-bar-color';
 import changeNavigationBarColor from 'react-native-navigation-bar-color';
-import { AppContext } from '../../../contexts/AppContext';
-import useAuth from '../../../hooks/useAuth';
 import useForm from '../../../hooks/useForm';
+import { AppContext } from '../../../contexts/AppContext';
 import Toast from 'react-native-toast-message';
 import { useApi } from '../../../hooks/useApi';
-import AsyncStorage from '@react-native-async-storage/async-storage';
 
 // create a component
 interface Props
-  extends NativeStackScreenProps<RootStackParams, 'ForgotPassword'> {}
-const ForgotPassword = ({navigation, route}: Props) => {
-  const {loadApi} = useApi()
-  const {code, onChange, setForm, form} = useForm({
-    code: ''
-  })
-  // const {Forgot} = useAuth()
+  extends NativeStackScreenProps<RootStackParams, 'CreateNewPassword'> {}
+const CreateNewPassword = ({navigation, route}: Props) => {
+  const { dataAuth } = route.params;
+  console.log(dataAuth)
   const {setIsLoading} = useContext(AppContext)
+  const {loadApi} = useApi()
+  const {code1,code2, onChange, setForm, form} = useForm({
+    code1: '',
+    code2: ''
+  })
   const height = Dimensions.get('window').height
+  const [password, setPassword] = useState('')
   useEffect(() => {
     const barra = async() => {
       try{
@@ -38,35 +40,37 @@ const ForgotPassword = ({navigation, route}: Props) => {
     }
     barra()
   }, [])
-  const Forgot = async(data: any, next: any) => {
-    console.log('sdcnd--',data)
+  const VerifyCode = async(next: any) => {
     try {
       setIsLoading(true);
-      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-      if (!emailRegex.test(data)  || data === '' || data == null || data == undefined) {
-        console.log('Correo electrónico inválido');
+      if (code1 != code2) {
         Toast.show({
           type: 'error',
-          text1: 'Correo electrónico inválido',
+          text1: 'Las contraseñas no son iguales',
         });
         setIsLoading(false); 
         return false;
       } else {
+        setPassword(code1)
+        console.log('0---',{
+          ...dataAuth,
+          "password": password
+        })
         try {
           const resp: any = await loadApi({
-            endpoint: 'auth/request_recovery',
-            type: 'POST',
+            endpoint: 'auth/change_password',
+            type: 'PUT',
             body: {
-              "email": code
+              ...dataAuth,
+              "password": code1
             },
           });
           console.log(resp.data);
             setIsLoading(false);
             Toast.show({
               type: 'success',
-              text1: 'Codigo enviado al correo electrónico',
+              text1: 'Contraseña actualizada correctamente',
             });
-            // await AsyncStorage.setItem('user', JSON.stringify(resp.data));
         next();
         } catch (error) {
           Toast.show({
@@ -99,7 +103,7 @@ const ForgotPassword = ({navigation, route}: Props) => {
           // backgroundColor: 'red',
           zIndex: 1
         }}>
-        <BtnBack Funccion={() => navigation.goBack()}/>
+        <BtnBack Funccion={() =>  navigation.goBack()}/>
         </View>
         <Image
           source={require('../../../assets/img/fondo1.3(Photoshop).png')}
@@ -119,24 +123,34 @@ const ForgotPassword = ({navigation, route}: Props) => {
             alignItems: 'center',
             gap: 5,
           }}>
-          <Text style={styles.title}>Recuperar contraseña</Text>
+          <Text style={styles.title}>Crea nueva contraseña</Text>
           <Text style={styles.text}>
-            Para recuperar tu contraseña, por favor ingresa tu correo
+            Ingresa una contraseña facil de recordar
           </Text>
         </View>
         <InputText
-          onchageText={e => onChange(e, 'code')}
-          name="Correo"
-          Type="Email"
+          onchageText={e => onChange(e, 'code1')}
+          name="Crear contraseña"
+          IconName='lock-closed'
+          // Type="Email"
           color="#009DA6"
-          value={code}
         />
+        <InputText
+          onchageText={e => onChange(e, 'code2')}
+          name="Verifica la contraseña"
+          IconName='lock-closed'
+          // Type="Email"
+          color="#009DA6"
+        />
+        <Text style={{...styles.text, fontSize: 12}}>
+            Irecuerda que la contraseña debe tener minimo 8 caracteres, al menos una letra en mayuscula y un numero
+          </Text>
         <Butukon
-          title="Enviar código de verificación"
+          title="Verificar Codigo"
           colorFondo="#009DA6"
           height={60}
-          border={20} 
-          onclick={() => Forgot(form.code,() => navigation.navigate('VerificationView', { correo: form.code }))}
+          border={20}
+          onclick={() => VerifyCode(() => navigation.navigate('Auth'))}
         />
       </View>
       </View>
@@ -145,4 +159,4 @@ const ForgotPassword = ({navigation, route}: Props) => {
 };
 
 //make this component available to the app
-export default ForgotPassword;
+export default CreateNewPassword;

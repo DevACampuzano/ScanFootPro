@@ -5,6 +5,7 @@ import {AppContext} from '../contexts/AppContext';
 import RNRestart from 'react-native-restart';
 import Toast from 'react-native-toast-message';
 import { GoogleSignin } from '@react-native-google-signin/google-signin';
+import { criticallyDampedSpringCalculations } from 'react-native-reanimated/lib/typescript/reanimated2/animation/springUtils';
 
 const useAuth = () => {
   const {setIsLoading} = useContext(AppContext);
@@ -91,16 +92,12 @@ const useAuth = () => {
   
     return true;
   };
-  
+
   const signIn = async (user: any, GoToDashBoard: any) => {
     setIsLoading(true);
   
     if (!validateInput(user)) {
       setIsLoading(false);
-      // Toast.show({
-      //   type: 'error',
-      //   text1: 'Por favor, complete todo los campos',
-      // });
       return;
     }
     try {
@@ -164,6 +161,29 @@ const useAuth = () => {
         console.log('ERROR IS: ' + e);
       });
   }
+  const Forgot = (data: any, next: any) => {
+    console.log(data)
+    try {
+      setIsLoading(true);
+      const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+      if (!emailRegex.test(data || data === '')) {
+        console.log('Correo electrónico inválido');
+        Toast.show({
+          type: 'error',
+          text1: 'Correo electrónico inválido',
+        });
+        setIsLoading(false); 
+        return false;
+      } else {
+        next();
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+  
+
 
   const signup  = async (user: any, GoToDashBoard: any) => {
     setIsLoading(true);
@@ -187,7 +207,6 @@ const useAuth = () => {
         });
     } catch (error) {
       setIsLoading(false);
-      // console.log('error----', error[0].Error);
       console.log(error.message)
       Toast.show({
         type: 'error',
@@ -200,7 +219,8 @@ const useAuth = () => {
     removeLocal,
     signIn,
     signup,
-    SigInGoolge
+    SigInGoolge,
+    Forgot
   };
 };
 

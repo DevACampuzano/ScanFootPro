@@ -4,6 +4,7 @@ const useForm = <T extends object>(initState: T) => {
   const [state, setState] = useState(initState);
 
   const onChange = (value: any, key: keyof T) => {
+    console.log(value)
     setState({
       ...state,
       [key]: value,

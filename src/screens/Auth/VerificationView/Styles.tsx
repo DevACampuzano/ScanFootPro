@@ -1,6 +1,6 @@
 import {StyleSheet} from 'react-native';
 import { normalize } from '../../../theme/Styles';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
+// import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 const styles = StyleSheet.create({
   container: {
@@ -27,15 +27,15 @@ const styles = StyleSheet.create({
   },
   title:{
     fontSize: normalize(33),
-    color: Colors.primary,
+    color: '#009DA6',
     fontWeight: 'bold',
     // backgroundColor: 'red',
-    width: '80%'
+    width: '90%'
   },
   text:{
     fontSize: normalize(20),
     color: '#000',
-    width: '80%'
+    width: '90%'
   }
 });
 

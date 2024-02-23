@@ -11,6 +11,7 @@ import {NativeStackScreenProps} from '@react-navigation/native-stack';
 import {RootStackParams} from '../../../navigations/StackAuth';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { AppContext } from '../../../contexts/AppContext';
+import changeNavigationBarColor, { hideNavigationBar } from 'react-native-navigation-bar-color';
 
 interface Props extends NativeStackScreenProps<RootStackParams, 'Home'> {}
 const HomeScreen = ({navigation}: Props) => {
@@ -41,7 +42,18 @@ const HomeScreen = ({navigation}: Props) => {
 
   useEffect(() => {
     translateX.value = withTiming(0, {duration: 500});
+    const barra = async() => {
+      try{
+        const response = await changeNavigationBarColor('#009DA6');
+        console.log(response)// {success: true}
+    }catch(e){
+        console.log(e)// {success: false}
+    }
+    }
+    barra()
     getLocal();
+    // StatusBar.setHidden(true, 'slide');
+    // hideNavigationBar();
   }, []);
 
   const animatedStyles = useAnimatedStyle(() => {

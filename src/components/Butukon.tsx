@@ -20,7 +20,7 @@ interface ButukonProps {
   color = 'white',
   colorFondo = '#364989',
   border = 15,
-  width = '80%',
+  width = '90%',
   height = 50,
   icon,
   onclick = () => console.log('hello desde el Butukon'),

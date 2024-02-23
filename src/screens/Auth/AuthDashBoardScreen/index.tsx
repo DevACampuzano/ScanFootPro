@@ -10,6 +10,7 @@ import {RootStackParams} from '../../../navigations/StackAuth';
 import styles from './Styles';
 import Butukon from '../../../components/Butukon';
 import TopTabNavigatorAuth from '../../../navigations/TopTabNavigatorAuth';
+import changeNavigationBarColor from 'react-native-navigation-bar-color';
 
 interface Props extends NativeStackScreenProps<RootStackParams, 'Auth'> {}
 const AuthScreen = ({navigation}: Props) => {
@@ -17,6 +18,15 @@ const AuthScreen = ({navigation}: Props) => {
 
   useEffect(() => {
     translateX.value = withTiming(0, {duration: 100});
+    const barra = async() => {
+      try{
+        const response = await changeNavigationBarColor('#364989');
+        console.log(response)// {success: true}
+    }catch(e){
+        console.log(e)// {success: false}
+    }
+    }
+    barra()
   }, []);
 
   const animatedStyles = useAnimatedStyle(() => {
@@ -30,6 +40,7 @@ const AuthScreen = ({navigation}: Props) => {
    };
   const GoToForgotPassword = () => {
     navigation.navigate('ForgotPassword')
+    console.log('GoToForgotPassword')
    };
    
   return (
