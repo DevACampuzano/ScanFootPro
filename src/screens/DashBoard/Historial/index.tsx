@@ -1,84 +1,71 @@
-import React, { useState } from 'react';
-import { View, Text, Image } from 'react-native';
+import React, {useContext, useEffect, useState} from 'react';
+import {View, Text, Image} from 'react-native';
 import styles from './Styles';
-import { DrawerScreenProps } from '@react-navigation/drawer';
-import { DrawerDashBoardParams } from '../../../navigations/DrawerDashBoard';
+import {DrawerScreenProps} from '@react-navigation/drawer';
+import {DrawerDashBoardParams} from '../../../navigations/DrawerDashBoard';
 import {InputText} from '../../../components/InputText';
 import {DismissKeyboard} from '../../../components/DismissKeyboard';
-import { ObjectFoot } from '../../../interfaces/data';
+import {ObjectFoot, data} from '../../../interfaces/data';
 import CardFoot from '../../../components/CardFoot';
-import { FlatList } from 'react-native-gesture-handler';
+import {FlatList, RefreshControl} from 'react-native-gesture-handler';
+import {AppContext} from '../../../contexts/AppContext';
+import {useApi} from '../../../hooks/useApi';
+import Toast from 'react-native-toast-message';
 
 interface Props extends DrawerScreenProps<DrawerDashBoardParams, 'Home'> {}
 
 const Historial = (props: Props) => {
-  const data: ObjectFoot[] = [
-    {
-      id: 1,
-      name: 'Archbivo_1.png',
-      date: '2024-02-07',
-      img: 'https://firebasestorage.googleapis.com/v0/b/fb-picporter.appspot.com/o/man%2FNEW%20BALL%201.png?alt=media&token=60b9cdbe-a0dc-447d-9bf6-d6f9e40846b9',
-    },
-    {
-      id: 2,
-      name: 'Archbivo_2.png',
-      date: '2024-02-07',
-      img: 'https://belleza-estetica.com.ar/wp-content/uploads/2023/11/anatomia-pie.jpg',
-    },
-    {
-      id: 2,
-      name: 'Archbivo_3.png',
-      date: '2024-02-07',
-      img: 'https://images.pexels.com/photos/356175/pexels-photo-356175.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      id: 1,
-      name: 'Archbivo_4.png',
-      date: '2024-02-07',
-      img: 'https://images.pexels.com/photos/105776/pexels-photo-105776.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      id: 2,
-      name: 'Archbivo_5.png',
-      date: '2024-02-07',
-      img: 'https://firebasestorage.googleapis.com/v0/b/fb-picporter.appspot.com/o/man%2FNEW%20BALL%201.png?alt=media&token=60b9cdbe-a0dc-447d-9bf6-d6f9e40846b9',
-    },
-    {
-      id: 2,
-      name: 'Archbivo_6.png',
-      date: '2024-02-07',
-      img: 'https://images.pexels.com/photos/2112021/pexels-photo-2112021.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      id: 1,
-      name: 'Archbivo_7.png',
-      date: '2024-02-07',
-      img: 'https://images.pexels.com/photos/9664045/pexels-photo-9664045.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      id: 2,
-      name: 'Archbivo_8.png',
-      date: '2024-02-07',
-      img: 'https://images.pexels.com/photos/5936266/pexels-photo-5936266.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    },
-    {
-      id: 2,
-      name: 'Archbivo_9.png',
-      date: '2024-02-07',
-      img: 'https://firebasestorage.googleapis.com/v0/b/fb-picporter.appspot.com/o/man%2FNEW%20BALL%201.png?alt=media&token=60b9cdbe-a0dc-447d-9bf6-d6f9e40846b9',
-    },
-  ];
+  const [data, setData] = useState([]);
   const [filteredData, setFilteredData] = useState(data);
-
+  const [refreshing, setRefreshing] = useState(false);
+  const {setIsLoading, isLoading} = useContext(AppContext);
+  const urlApi = 'https://a-pi-medical.vercel.app/';
+  const {loadApi} = useApi(urlApi);
+  const GetData = async () => {
+    try {
+      setIsLoading(true);
+      try {
+        const resp: any = await loadApi({
+          endpoint: 'pie',
+          type: 'get',
+        });
+        console.log(resp.data);
+        setIsLoading(false);
+        setData(resp.data);
+        // Actualiza filteredData aquí, después de setData
+        setFilteredData(resp.data);
+      } catch (error: any) {
+        Toast.show({
+          type: 'error',
+          text1: `${error.message}`,
+        });
+        setIsLoading(false);
+      }
+    } catch (error) {
+      console.log(error);
+      setIsLoading(false);
+    }
+  };
+  
+  useEffect(() => {
+    GetData();
+    
+  }, []);
+  console.log('---Data ',data)
   const handleSearch = (text: string) => {
     if (!text) {
       setFilteredData(data); // Restaurar todos los datos si el campo está vacío
     } else {
       const lowerCaseText = text.toLowerCase();
-      setFilteredData(data.filter(item => item.name.toLowerCase().includes(lowerCaseText)));
+      setFilteredData(
+        data.filter(item => item.name.toLowerCase().includes(lowerCaseText)),
+      );
     }
   };
-
+  const onRefresh = React.useCallback(() => {
+    setIsLoading(true);
+    GetData();
+  }, []);
   return (
     <DismissKeyboard>
       <View style={styles.container}>
@@ -87,17 +74,18 @@ const Historial = (props: Props) => {
           style={{
             position: 'absolute',
             top: -110,
-            opacity:  0.3,
+            opacity: 0.3,
             width: '100%',
-            height:  500,
+            height: 500,
           }}
         />
-        <View style={{
-          height:  120,
-          justifyContent: 'center',
-          alignItems: 'center',
-          gap:  5,
-        }}>
+        <View
+          style={{
+            height: 120,
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: 5,
+          }}>
           <Text style={styles.title}>Historial de pacientes</Text>
           <InputText
             name="Búsqueda"
@@ -106,29 +94,37 @@ const Historial = (props: Props) => {
           />
         </View>
         <FlatList
-        ListEmptyComponent={() => (
-          <View style={{
-            alignItems:'center',
-            justifyContent: 'center',
-            height: 100
-          }}>
-            <Text style={{...styles.title, fontSize: 20}}>No hay coincidencias</Text>
-          </View>
-        )}
-        style={{
-          width: '100%',
-        }}
-        data={filteredData}
-        keyExtractor={(item, index) => index.toString()}
-        renderItem={({ item }) => (
-          <CardFoot
-            date={item.date}
-            id={item.id}
-            // img={item.img}
-            name={item.name}
-          />
-        )}
-      />
+          onRefresh={onRefresh}
+          refreshing={refreshing}
+          refreshControl={
+            <RefreshControl refreshing={refreshing} onRefresh={onRefresh} />
+          }
+          ListEmptyComponent={() => (
+            <View
+              style={{
+                alignItems: 'center',
+                justifyContent: 'center',
+                height: 100,
+              }}>
+              <Text style={{...styles.title, fontSize: 20}}>
+                No hay coincidencias
+              </Text>
+            </View>
+          )}
+          style={{
+            width: '100%',
+          }}
+          data={filteredData}
+          keyExtractor={(item, index) => index.toString()}
+          renderItem={({item}) => (
+            <CardFoot
+              date={item.date}
+              id={item.id}
+              img={item.img}
+              name={item.name}
+            />
+          )}
+        />
       </View>
     </DismissKeyboard>
   );

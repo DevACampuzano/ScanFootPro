@@ -20,7 +20,7 @@ interface ILoadApiProps {
   file?: boolean;
 }
 
-export const useApi = () => {
+export const useApi = (url = apiURl) => {
   const [loadingApi, setLoading] = useState<string[]>([]);
   const [loadedApi, setLoadedApi] = useState<string[]>([]);
   const [errorApi, setErrorApi] = useState<string>("");
@@ -67,7 +67,7 @@ export const useApi = () => {
 
       const config: IRequestProp = {
         method: type,
-        url: `${apiURl}${endpoint}`,
+        url: `${url}${endpoint}`,
         // url: `https://apisportsviu.kiura.co/api/${endpoint}`,
         headers: headers,
       };
