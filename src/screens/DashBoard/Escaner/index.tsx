@@ -32,21 +32,36 @@ const Escaner = ({navigation}: Props) => {
   const [counter, setcounter] = useState(1)
 
   const takePhoto = async () => {
-    setcounter(counter + 1)
+    setcounter(counter +  1);
     if (cameraRef.current) {
       const photo = await cameraRef.current.takePhoto();
       console.log(photo.path);
       
       // Nombre del archivo en el dispositivo
-      const filename = `ScanFootPro${counter}.jpg`;
-      // Ruta donde se guardará la foto en el dispositivo
-      const newPath = `${RNFS.PicturesDirectoryPath}/${filename}`;
+      let filename = `ScanFootPro${counter}.jpg`;
+      let newPath = `${RNFS.PicturesDirectoryPath}/${filename}`;
+      
+      // Verificar si el archivo ya existe
+      const fileExists = await RNFS.exists(newPath);
+      
+      if (fileExists) {
+        // Si el archivo existe, generar un nuevo nombre de archivo
+        // Puedes usar un enfoque basado en tiempo, incrementar un contador, etc.
+        // En este ejemplo, simplemente incrementamos un contador en el nombre del archivo
+        let counter =  1;
+        while (fileExists) {
+          filename = `ScanFootPro${counter}.jpg`;
+          newPath = `${RNFS.PicturesDirectoryPath}/${filename}`;
+          fileExists = await RNFS.exists(newPath);
+          counter++;
+        }
+      }
       
       // Mover la foto a la nueva ubicación
       RNFS.moveFile(photo.path, newPath)
         .then(() => {
           console.log('Foto guardada correctamente');
-          console.log(newPath)
+          console.log(newPath);
           ToastAndroid.show('Foto tomada y guardada', ToastAndroid.SHORT);
         })
         .catch((error) => {
@@ -55,6 +70,7 @@ const Escaner = ({navigation}: Props) => {
         });
     }
   };
+  
   
 
   return (

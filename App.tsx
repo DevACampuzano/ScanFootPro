@@ -6,7 +6,7 @@ import AppNavigator from './src/navigations/StackAuth';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import AnimatedSplash from 'react-native-animated-splash-screen';
 import {LogBox} from 'react-native';
-import {check, PERMISSIONS, request} from 'react-native-permissions';
+import {check, PERMISSIONS, request, requestMultiple} from 'react-native-permissions';
 import {AppContextProvider} from './src/contexts/AppContext';
 import Toast, { BaseToast, ErrorToast } from 'react-native-toast-message';
 
@@ -17,8 +17,15 @@ const App = (props: Props) => {
   LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state',
   ]);
+  const permissions = [
+    PERMISSIONS.ANDROID.CAMERA,
+    PERMISSIONS.ANDROID.RECORD_AUDIO,
+    PERMISSIONS.ANDROID.READ_MEDIA_IMAGES,
+    PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE,
+    // Agrega aquí los permisos de iOS si es necesario
+  ];
   useEffect(() => {
-    check(PERMISSIONS.ANDROID.CAMERA)
+    requestMultiple(permissions)
       .then(result => {
         switch (result) {
           case 'granted':
@@ -27,6 +34,9 @@ const App = (props: Props) => {
           case 'denied':
             // Solicita el permiso
             request(PERMISSIONS.ANDROID.CAMERA);
+            request(PERMISSIONS.ANDROID.RECORD_AUDIO);
+            request(PERMISSIONS.ANDROID.READ_MEDIA_IMAGES);
+            request(PERMISSIONS.ANDROID.WRITE_EXTERNAL_STORAGE);
             break;
           default:
             // El estado es 'blocked', 'limited' o 'undetermined'

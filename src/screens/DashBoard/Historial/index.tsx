@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useState} from 'react';
-import {View, Text, Image} from 'react-native';
+import {View, Text, Image, TouchableOpacity, Linking} from 'react-native';
 import styles from './Styles';
 import {DrawerScreenProps} from '@react-navigation/drawer';
 import {DrawerDashBoardParams} from '../../../navigations/DrawerDashBoard';
@@ -117,12 +117,14 @@ const Historial = (props: Props) => {
           data={filteredData}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
-            <CardFoot
+            <TouchableOpacity activeOpacity={0.9} onPress={() => Linking.openURL('https://www.google.com/search?q=trehe+js&oq=tre&gs_lcrp=EgZjaHJvbWUqBggCEEUYOzIGCAAQRRg8MgYIARBFGDkyBggCEEUYOzIGCAMQRRg5MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxAuGEDSAQgyNjA2ajBqMagCALACAA&sourceid=chrome&ie=UTF-8').catch(err => console.error('An error occurred', err))}>
+              <CardFoot
               date={item.date}
-              id={item.id}
+              id={item.id} 
               img={item.img}
               name={item.name}
             />
+            </TouchableOpacity>
           )}
         />
       </View>
