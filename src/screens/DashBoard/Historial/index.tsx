@@ -103,7 +103,7 @@ const Historial = (props: Props) => {
             <View
               style={{
                 alignItems: 'center',
-                justifyContent: 'center',
+                justifyContent: 'center',       
                 height: 100,
               }}>
               <Text style={{...styles.title, fontSize: 20}}>

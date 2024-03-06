@@ -6,14 +6,20 @@ import AppNavigator from './src/navigations/StackAuth';
 import {GestureHandlerRootView} from 'react-native-gesture-handler';
 import AnimatedSplash from 'react-native-animated-splash-screen';
 import {LogBox} from 'react-native';
-import {check, PERMISSIONS, request, requestMultiple} from 'react-native-permissions';
+import {
+  check,
+  PERMISSIONS,
+  request,
+  requestMultiple,
+} from 'react-native-permissions';
 import {AppContextProvider} from './src/contexts/AppContext';
-import Toast, { BaseToast, ErrorToast } from 'react-native-toast-message';
+import Toast, {BaseToast, ErrorToast} from 'react-native-toast-message';
 
 type Props = {};
 
 const App = (props: Props) => {
   const [isLoaded, setIsLoaded] = useState(false);
+  // Estado para controlar la visibilidad de la superposición
   LogBox.ignoreLogs([
     'Non-serializable values were found in the navigation state',
   ]);
@@ -57,14 +63,14 @@ const App = (props: Props) => {
       Overwrite 'success' type,
       by modifying the existing `BaseToast` component
     */
-    success: (props) => (
+    success: props => (
       <BaseToast
         {...props}
-        style={{ borderLeftColor: '#009DA6' }}
-        contentContainerStyle={{ paddingHorizontal: 15 }}
+        style={{borderLeftColor: '#009DA6'}}
+        contentContainerStyle={{paddingHorizontal: 15}}
         text1Style={{
           fontSize: 14,
-          fontWeight: '400'
+          fontWeight: '400',
         }}
       />
     ),
@@ -72,16 +78,16 @@ const App = (props: Props) => {
       Overwrite 'error' type,
       by modifying the existing `ErrorToast` component
     */
-    error: (props) => (
+    error: props => (
       <ErrorToast
         {...props}
         text1Style={{
           fontSize: 14,
-          fontWeight: '400'
+          fontWeight: '400',
         }}
         text2Style={{
-           fontSize: 13,
-          fontWeight: '400'
+          fontSize: 13,
+          fontWeight: '400',
         }}
       />
     ),
@@ -107,7 +113,7 @@ const App = (props: Props) => {
                 <AppNavigator />
             </AppContextProvider>
           </NavigationContainer>
-        </GestureHandlerRootView>   
+        </GestureHandlerRootView>
       </AnimatedSplash>
       <Toast config={toastConfig} />
     </>
@@ -115,4 +121,3 @@ const App = (props: Props) => {
 };
 
 export default App;
- 
