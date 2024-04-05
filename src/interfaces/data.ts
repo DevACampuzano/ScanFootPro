@@ -19,12 +19,24 @@ export const data = [
   },
   {
     id: 4,
+    image: require('../assets/img/tuto2.png'),
+    title: 'Escaneo del pie 2',
+    text: 'Coloca el pie sobre el área designada en la pantalla de la aplicación y sigue las instrucciones en pantalla para posicionar el pie correctamente.',
+  },
+  {
+    id: 5,
+    image: require('../assets/img/tuto2.png'),
+    title: 'Escaneo del pie 3',
+    text: 'Coloca el pie sobre el área designada en la pantalla de la aplicación y sigue las instrucciones en pantalla para posicionar el pie correctamente.',
+  },
+  {
+    id: 6,
     image: require('../assets/img/pie.png'),
     title: 'Generación del modelo 3D',
     text: 'Una vez que la aplicación haya capturado la imagen, procesará la información para crear un modelo 3D detallado de la planta de tu pie.',
   },
   {
-    id: 5,
+    id: 7,
     image: require('../assets/img/pata1.png'),
     title: 'Guardado y visualización',
     text: 'Puedes optar por guardar el modelo 3D en tu dispositivo o compartirlo directamente. Además, puedes revisar el historial de escaneos para acceder a los modelos previos.',

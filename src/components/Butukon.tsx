@@ -12,10 +12,10 @@ interface ButukonProps {
   height?: number;
   icon?: string;
   onclick?: () => void;
- }
- 
+  disabled?: boolean;
+}
 
- const Butukon: React.FC<ButukonProps> = ({
+const Butukon: React.FC<ButukonProps> = ({
   title,
   color = 'white',
   colorFondo = '#364989',
@@ -23,6 +23,7 @@ interface ButukonProps {
   width = '90%',
   height = 50,
   icon,
+  disabled = false,
   onclick = () => console.log('hello desde el Butukon'),
 }) => {
   return (
@@ -38,9 +39,11 @@ interface ButukonProps {
           alignItems: 'center',
           justifyContent: 'center',
           flexDirection: 'row',
-          gap: 20
-        }}>
-          {icon && <Icon name={icon} size={30} color={color} />}
+          gap: 20,
+          opacity: disabled ? 0.2 : 1,
+        }}
+        disabled={disabled}>
+        {icon && <Icon name={icon} size={30} color={color} />}
         <Text style={{color: color, ...globalStyles.title}}>{title}</Text>
       </TouchableOpacity>
     </>

@@ -1,5 +1,13 @@
 import React, {useEffect} from 'react';
-import {TextInput, Button, View, Text, StatusBar, Image} from 'react-native';
+import {
+  TextInput,
+  Button,
+  View,
+  Text,
+  StatusBar,
+  Image,
+  SafeAreaView,
+} from 'react-native';
 import Animated, {
   useSharedValue,
   useAnimatedStyle,
@@ -18,15 +26,15 @@ const AuthScreen = ({navigation}: Props) => {
 
   useEffect(() => {
     translateX.value = withTiming(0, {duration: 100});
-    const barra = async() => {
-      try{
+    const barra = async () => {
+      try {
         const response = await changeNavigationBarColor('#364989');
-        console.log(response)// {success: true}
-    }catch(e){
-        console.log(e)// {success: false}
-    }
-    }
-    barra()
+        console.log(response); // {success: true}
+      } catch (e) {
+        console.log(e); // {success: false}
+      }
+    };
+    barra();
   }, []);
 
   const animatedStyles = useAnimatedStyle(() => {
@@ -34,23 +42,27 @@ const AuthScreen = ({navigation}: Props) => {
   });
   const GoToDashBoard = () => {
     navigation.reset({
-       index: 0,
-       routes: [{ name: 'DashBoard' }],
+      index: 0,
+      routes: [{name: 'DashBoard'}],
     });
-   };
+  };
   const GoToForgotPassword = () => {
-    navigation.navigate('ForgotPassword')
-    console.log('GoToForgotPassword')
-   };
-   
+    navigation.navigate('ForgotPassword');
+    console.log('GoToForgotPassword');
+  };
+
   return (
     <>
+      <SafeAreaView />
       <StatusBar translucent backgroundColor="transparent" />
       <View style={styles.container}>
         <Animated.View style={[styles.containerAuth, animatedStyles]}>
           <Text style={styles.title}>Bienvenido</Text>
         </Animated.View>
-        <TopTabNavigatorAuth GoToDashBoard={GoToDashBoard} GoToForgotPassword={GoToForgotPassword}/>
+        <TopTabNavigatorAuth
+          GoToDashBoard={GoToDashBoard}
+          GoToForgotPassword={GoToForgotPassword}
+        />
       </View>
     </>
   );

@@ -4,8 +4,8 @@ import {useApi} from './useApi';
 import {AppContext} from '../contexts/AppContext';
 import RNRestart from 'react-native-restart';
 import Toast from 'react-native-toast-message';
-import { GoogleSignin } from '@react-native-google-signin/google-signin';
-import { criticallyDampedSpringCalculations } from 'react-native-reanimated/lib/typescript/reanimated2/animation/springUtils';
+import {GoogleSignin} from '@react-native-google-signin/google-signin';
+import {criticallyDampedSpringCalculations} from 'react-native-reanimated/lib/typescript/reanimated2/animation/springUtils';
 
 const useAuth = () => {
   const {setIsLoading} = useContext(AppContext);
@@ -24,32 +24,32 @@ const useAuth = () => {
     setIsLoading(true);
     try {
       console.log('si llega');
-  
+
       // Verificar si el usuario ha iniciado sesión con Google
       const isSignedIn = await GoogleSignin.isSignedIn();
       if (isSignedIn) {
         // Si el usuario ha iniciado sesión con Google, cerrar la sesión
         await GoogleSignin.signOut();
       }
-  
+
       // Limpiar el almacenamiento local
       await AsyncStorage.clear();
-  
+
       // Reiniciar la aplicación
       setTimeout(() => {
         setIsLoading(false);
         RNRestart.Restart();
-      },  1000);
+      }, 1000);
     } catch (e) {
       // error reading value
       setTimeout(() => {
         setIsLoading(false);
-      },  1000);
+      }, 1000);
     }
   };
-  
+
   const validateInput = (user: any) => {
-    if (user.name === '' || user.email === '' && user.password === '') {
+    if (user.name === '' || (user.email === '' && user.password === '')) {
       console.log('Complete los campos');
       Toast.show({
         type: 'error',
@@ -67,7 +67,7 @@ const useAuth = () => {
       });
       return false;
     }
-  
+
     // Validar contraseña
     const passwordRegex = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)[a-zA-Z\d]{8,}$/;
     if (!passwordRegex.test(user.password)) {
@@ -78,7 +78,7 @@ const useAuth = () => {
       });
       return false;
     }
-  
+
     // Validar nombre
     const nameRegex = /^[a-zA-Z\s]*$/;
     if (!nameRegex.test(user.name)) {
@@ -89,13 +89,13 @@ const useAuth = () => {
       });
       return false;
     }
-  
+
     return true;
   };
 
   const signIn = async (user: any, GoToDashBoard: any) => {
     setIsLoading(true);
-  
+
     if (!validateInput(user)) {
       setIsLoading(false);
       return;
@@ -107,7 +107,7 @@ const useAuth = () => {
         // token: true,
         body: user,
       });
-      console.log('eijvli---',resp);
+      console.log('eijvli---', resp);
       console.log(resp.data);
       Toast.show({
         type: 'success',
@@ -132,11 +132,13 @@ const useAuth = () => {
       });
     }
   };
-  
+
   const SigInGoolge = (GoToDashBoard: any) => {
     GoogleSignin.configure({
-      androidClientId: '558743903976-t4ttf9jgjjvc0g4g4cru8scjs277a2ho.apps.googleusercontent.com',
-      // iosClientId: 'ADD_YOUR_iOS_CLIENT_ID_HERE',
+      androidClientId:
+        '558743903976-t4ttf9jgjjvc0g4g4cru8scjs277a2ho.apps.googleusercontent.com',
+      iosClientId:
+        '558743903976-qsijhift0vdie9v1m9hvc9ma8f7vh32u.apps.googleusercontent.com',
     });
     GoogleSignin.hasPlayServices()
       .then(hasPlayService => {
@@ -150,7 +152,7 @@ const useAuth = () => {
                 type: 'success',
                 text1: 'Bienvenido 👋',
               });
-              GoToDashBoard()
+              GoToDashBoard();
             })
             .catch(e => {
               console.log('ERROR IS: ' + e);
@@ -160,9 +162,9 @@ const useAuth = () => {
       .catch(e => {
         console.log('ERROR IS: ' + e);
       });
-  }
+  };
   const Forgot = (data: any, next: any) => {
-    console.log(data)
+    console.log(data);
     try {
       setIsLoading(true);
       const emailRegex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
@@ -172,7 +174,7 @@ const useAuth = () => {
           type: 'error',
           text1: 'Correo electrónico inválido',
         });
-        setIsLoading(false); 
+        setIsLoading(false);
         return false;
       } else {
         next();
@@ -182,10 +184,8 @@ const useAuth = () => {
       setIsLoading(false);
     }
   };
-  
 
-
-  const signup  = async (user: any, GoToDashBoard: any) => {
+  const signup = async (user: any, GoToDashBoard: any) => {
     setIsLoading(true);
 
     if (!validateInput(user)) {
@@ -199,15 +199,15 @@ const useAuth = () => {
         body: user,
       });
       console.log(resp.data);
-        GoToDashBoard();
-        setIsLoading(false);
-        Toast.show({
-          type: 'success',
-          text1: 'Revisa tu correo electrónico y activa tu cuenta',
-        });
+      GoToDashBoard();
+      setIsLoading(false);
+      Toast.show({
+        type: 'success',
+        text1: 'Revisa tu correo electrónico y activa tu cuenta',
+      });
     } catch (error) {
       setIsLoading(false);
-      console.log(error.message)
+      console.log(error.message);
       Toast.show({
         type: 'error',
         text1: `${error.message}`,
@@ -220,7 +220,7 @@ const useAuth = () => {
     signIn,
     signup,
     SigInGoolge,
-    Forgot
+    Forgot,
   };
 };
 
