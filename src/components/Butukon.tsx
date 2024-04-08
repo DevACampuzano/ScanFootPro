@@ -41,6 +41,7 @@ const Butukon: React.FC<ButukonProps> = ({
           flexDirection: 'row',
           gap: 20,
           opacity: disabled ? 0.2 : 1,
+          alignSelf: 'center'
         }}
         disabled={disabled}>
         {icon && <Icon name={icon} size={30} color={color} />}
