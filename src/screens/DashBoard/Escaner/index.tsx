@@ -12,7 +12,7 @@ import {
   useCameraDevice,
   useCameraPermission,
   useMicrophonePermission,
-  PermissionsAndroid, 
+  PermissionsAndroid,  
   useCameraFormat,
 } from 'react-native-vision-camera';
 import {DrawerScreenProps} from '@react-navigation/drawer';
@@ -80,9 +80,15 @@ const Escaner = ({navigation}: Props) => {
        text1: 'Enviando fotos',
      });
      setIsLoading(true);
+     const photoObject = {
+      'foto_planta_pie': photos[0].photo, 
+      'foto_lado_derecho': photos[1].photo, 
+      'foto_lado_izquierdo': photos[2].photo, 
+    };
      const response = await axios.post(
-       'https://50gzm64d-3000.use2.devtunnels.ms/',
-       {photos}, // Enviar el array de objetos de fotos
+       'https://ltwmcvfm-5000.use.devtunnels.ms/process_images',
+      //  'https://ltwmcvfm-5000.use.devtunnels.ms/process_images',
+       photoObject, // Enviar el array de objetos de fotos
        {
          headers: {
            'Content-Type': 'application/json',
@@ -99,6 +105,7 @@ const Escaner = ({navigation}: Props) => {
      // Llamar a fetchSTLFile con la URL del archivo STL obtenida de la respuesta
      const stlFileUrl = response.data.url; // Asegúrate de que la respuesta del servidor incluya la URL del archivo STL
      fetchSTLFile(stlFileUrl);
+     console.log('---',response.data)
   } catch (error) {
      console.log(error);
      Toast.show({
@@ -184,7 +191,8 @@ const Escaner = ({navigation}: Props) => {
       <Butukon
         title="Escanear"
         onclick={() => {
-          SetModalUser()
+          // SetModalUser()
+          takePhotoo()
         }}
         disabled={botomdisable ? false : true}
       />
