@@ -48,4 +48,5 @@ export interface ObjectFoot {
   name: string;
   date: string;
   img: string;
+  url: string;
 }

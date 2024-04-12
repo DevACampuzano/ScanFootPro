@@ -1,37 +1,55 @@
-import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
-import React from 'react'
-import { ObjectFoot } from '../interfaces/data'
+import {
+  View,
+  Text,
+  Image,
+  StyleSheet,
+  TouchableOpacity,
+  Linking,
+} from 'react-native';
+import React from 'react';
+import {ObjectFoot} from '../interfaces/data';
 
-const CardFoot = ({date, img, name}: ObjectFoot) => {
+const CardFoot = ({date, img, name, url}: ObjectFoot) => {
   return (
-    <View style={style.Cart}>
-        <Image source={{uri: img}} style={{
+    <TouchableOpacity
+      activeOpacity={0.9}
+      onPress={() =>
+        Linking.openURL(url).catch(err =>
+          console.error('An error occurred', err),
+        )
+      }>
+      <View style={style.Cart}>
+        <Image
+          source={{uri: img}}
+          style={{
             // borderColor: 'red',
             // borderWidth: 1,
-            height: '90%',
-            width: '25%',
-            borderRadius: 500
-        }}/>
-      <View style={style.containerText}>
-      <Text style={{...style.Text, ...style.Title}}>{name}</Text>
-      <Text style={style.Text}>{date}</Text>
+            height: 90,
+            width: 90,
+            borderRadius: 500,
+          }}
+        />
+        <View style={style.containerText}>
+          <Text style={{...style.Text, ...style.Title}}>{name}</Text>
+          <Text style={style.Text}>{date}</Text>
+        </View>
+        <View style={style.containerText}>
+          <TouchableOpacity>
+            <Text style={{...style.Text, ...style.Title}}>Ver en 3D</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={{...style.Text, ...style.Title}}>Imprimir</Text>
+          </TouchableOpacity>
+          <TouchableOpacity>
+            <Text style={{...style.Text, ...style.Title}}>Eliminar</Text>
+          </TouchableOpacity>
+        </View>
       </View>
-      <View style={style.containerText}>
-      <TouchableOpacity>
-      <Text style={{...style.Text, ...style.Title}}>Ver en 3D</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-      <Text style={{...style.Text, ...style.Title}}>Imprimir</Text>
-      </TouchableOpacity>
-      <TouchableOpacity>
-      <Text style={{...style.Text, ...style.Title}}>Eliminar</Text>
-      </TouchableOpacity>
-      </View>
-    </View>
-  )
-}
-const style =  StyleSheet.create({
-  Cart:{
+    </TouchableOpacity>
+  );
+};
+const style = StyleSheet.create({
+  Cart: {
     // borderColor: 'red',
     // borderWidth: 1,
     width: '95%',
@@ -43,25 +61,23 @@ const style =  StyleSheet.create({
     marginVertical: 8,
     paddingVertical: 10,
     alignItems: 'center',
-    borderRadius: 10
+    borderRadius: 10,
   },
-  Text:{
+  Text: {
     color: '#000',
   },
   Title: {
     fontWeight: 'bold',
-    fontSize: 15
+    fontSize: 15,
   },
-  containerText:{
+  containerText: {
     // borderColor: 'red',
     // borderWidth: 1,
     height: '100%',
     width: '35%',
     alignItems: 'center',
-    justifyContent: 'center'
-}
- 
+    justifyContent: 'center',
+  },
 });
 
-
-export default CardFoot
+export default CardFoot;

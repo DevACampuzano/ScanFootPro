@@ -11,6 +11,7 @@ import {FlatList, RefreshControl} from 'react-native-gesture-handler';
 import {AppContext} from '../../../contexts/AppContext';
 import {useApi} from '../../../hooks/useApi';
 import Toast from 'react-native-toast-message';
+import MyWebView from '../../../components/MyWebView';
 
 interface Props extends DrawerScreenProps<DrawerDashBoardParams, 'Home'> {}
 
@@ -46,12 +47,11 @@ const Historial = (props: Props) => {
       setIsLoading(false);
     }
   };
-  
+
   useEffect(() => {
     GetData();
-    
   }, []);
-  console.log('---Data ',data)
+  console.log('---Data ', data);
   const handleSearch = (text: string) => {
     if (!text) {
       setFilteredData(data); // Restaurar todos los datos si el campo está vacío
@@ -66,6 +66,11 @@ const Historial = (props: Props) => {
     setIsLoading(true);
     GetData();
   }, []);
+  const urL = [
+    'http://localhost:5173/1',
+    'http://localhost:5173/2',
+    'http://localhost:5173/1',
+  ];
   return (
     <DismissKeyboard>
       <View style={styles.container}>
@@ -103,7 +108,7 @@ const Historial = (props: Props) => {
             <View
               style={{
                 alignItems: 'center',
-                justifyContent: 'center',       
+                justifyContent: 'center',
                 height: 100,
               }}>
               <Text style={{...styles.title, fontSize: 20}}>
@@ -117,14 +122,14 @@ const Historial = (props: Props) => {
           data={filteredData}
           keyExtractor={(item, index) => index.toString()}
           renderItem={({item}) => (
-            <TouchableOpacity activeOpacity={0.9} onPress={() => Linking.openURL('https://www.google.com/search?q=trehe+js&oq=tre&gs_lcrp=EgZjaHJvbWUqBggCEEUYOzIGCAAQRRg8MgYIARBFGDkyBggCEEUYOzIGCAMQRRg5MgYIBBBFGDwyBggFEEUYPDIGCAYQRRg8MgYIBxAuGEDSAQgyNjA2ajBqMagCALACAA&sourceid=chrome&ie=UTF-8').catch(err => console.error('An error occurred', err))}>
-              <CardFoot
+            <CardFoot
               date={item.date}
-              id={item.id} 
+              id={item.id}
               img={item.img}
               name={item.name}
+              url={urL[item.id]}
             />
-            </TouchableOpacity>
+            // </TouchableOpacity>
           )}
         />
       </View>

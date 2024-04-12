@@ -110,7 +110,7 @@ const App = (props: Props) => {
         <GestureHandlerRootView style={{flex: 1}}>
           <NavigationContainer>
             <AppContextProvider>
-                <AppNavigator />
+              <AppNavigator />
             </AppContextProvider>
           </NavigationContainer>
         </GestureHandlerRootView>
