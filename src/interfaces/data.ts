@@ -13,20 +13,20 @@ export const data = [
   },
   {
     id: 3,
-    image: require('../assets/img/tuto2.png'),
-    title: 'Escaneo del pie',
+    image: require('../assets/img/tuto4.png'),
+    title: 'Escaneo del pie del lado izquierdo',
     text: 'Coloca el pie sobre el área designada en la pantalla de la aplicación y sigue las instrucciones en pantalla para posicionar el pie correctamente.',
   },
   {
     id: 4,
-    image: require('../assets/img/tuto2.png'),
-    title: 'Escaneo del pie 2',
+    image: require('../assets/img/tuto5.png'),
+    title: 'Escaneo del pie del lado derecho',
     text: 'Coloca el pie sobre el área designada en la pantalla de la aplicación y sigue las instrucciones en pantalla para posicionar el pie correctamente.',
   },
   {
     id: 5,
     image: require('../assets/img/tuto2.png'),
-    title: 'Escaneo del pie 3',
+    title: 'Escaneo de la planta del pie',
     text: 'Coloca el pie sobre el área designada en la pantalla de la aplicación y sigue las instrucciones en pantalla para posicionar el pie correctamente.',
   },
   {

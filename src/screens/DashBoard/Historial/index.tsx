@@ -67,9 +67,9 @@ const Historial = (props: Props) => {
     GetData();
   }, []);
   const urL = [
-    'http://localhost:5173/1',
-    'http://localhost:5173/2',
-    'http://localhost:5173/1',
+    'https://3-d-eta.vercel.app/1',
+    'https://3-d-eta.vercel.app/2',
+    'https://3-d-eta.vercel.app/1',
   ];
   return (
     <DismissKeyboard>

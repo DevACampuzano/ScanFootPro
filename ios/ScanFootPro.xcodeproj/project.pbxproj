@@ -13,7 +13,6 @@
 		13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 13B07FB51A68108700A75B9A /* Images.xcassets */; };
 		13B07FC11A68108700A75B9A /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 13B07FB71A68108700A75B9A /* main.m */; };
 		7699B88040F8A987B510C191 /* libPods-ScanFootPro-ScanFootProTests.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 19F6CBCC0A4E27FBF8BF4A61 /* libPods-ScanFootPro-ScanFootProTests.a */; };
-		81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */; };
 		F83114972BC81F7700782B27 /* client_558743903976-qsijhift0vdie9v1m9hvc9ma8f7vh32u.apps.googleusercontent.com (1).plist in Resources */ = {isa = PBXBuildFile; fileRef = F83114962BC81F7700782B27 /* client_558743903976-qsijhift0vdie9v1m9hvc9ma8f7vh32u.apps.googleusercontent.com (1).plist */; };
 		F8D409062BBF4D4B00D26108 /* Fonts in Resources */ = {isa = PBXBuildFile; fileRef = F8D409052BBF4D4B00D26108 /* Fonts */; };
 /* End PBXBuildFile section */
@@ -43,7 +42,6 @@
 		5709B34CF0A7D63546082F79 /* Pods-ScanFootPro.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScanFootPro.release.xcconfig"; path = "Target Support Files/Pods-ScanFootPro/Pods-ScanFootPro.release.xcconfig"; sourceTree = "<group>"; };
 		5B7EB9410499542E8C5724F5 /* Pods-ScanFootPro-ScanFootProTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScanFootPro-ScanFootProTests.debug.xcconfig"; path = "Target Support Files/Pods-ScanFootPro-ScanFootProTests/Pods-ScanFootPro-ScanFootProTests.debug.xcconfig"; sourceTree = "<group>"; };
 		5DCACB8F33CDC322A6C60F78 /* libPods-ScanFootPro.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-ScanFootPro.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ScanFootPro/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		89C6BE57DB24E9ADA2F236DE /* Pods-ScanFootPro-ScanFootProTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ScanFootPro-ScanFootProTests.release.xcconfig"; path = "Target Support Files/Pods-ScanFootPro-ScanFootProTests/Pods-ScanFootPro-ScanFootProTests.release.xcconfig"; sourceTree = "<group>"; };
 		ED297162215061F000B7C4FE /* JavaScriptCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = JavaScriptCore.framework; path = System/Library/Frameworks/JavaScriptCore.framework; sourceTree = SDKROOT; };
 		F83114962BC81F7700782B27 /* client_558743903976-qsijhift0vdie9v1m9hvc9ma8f7vh32u.apps.googleusercontent.com (1).plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "client_558743903976-qsijhift0vdie9v1m9hvc9ma8f7vh32u.apps.googleusercontent.com (1).plist"; sourceTree = "<group>"; };
@@ -94,7 +92,6 @@
 				13B07FB01A68108700A75B9A /* AppDelegate.mm */,
 				13B07FB51A68108700A75B9A /* Images.xcassets */,
 				13B07FB61A68108700A75B9A /* Info.plist */,
-				81AB9BB72411601600AC10FF /* LaunchScreen.storyboard */,
 				13B07FB71A68108700A75B9A /* main.m */,
 			);
 			name = ScanFootPro;
@@ -248,7 +245,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				F8D409062BBF4D4B00D26108 /* Fonts in Resources */,
-				81AB9BB82411601600AC10FF /* LaunchScreen.storyboard in Resources */,
 				13B07FBF1A68108700A75B9A /* Images.xcassets in Resources */,
 				F83114972BC81F7700782B27 /* client_558743903976-qsijhift0vdie9v1m9hvc9ma8f7vh32u.apps.googleusercontent.com (1).plist in Resources */,
 			);
