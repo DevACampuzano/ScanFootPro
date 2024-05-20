@@ -3,10 +3,15 @@ import {Colors, normalize} from '../../../theme/Styles';
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
-    paddingTop: 24,
-    justifyContent: 'space-around',
+    flexGrow:  1,
+    justifyContent: 'center',
     alignItems: 'center',
+    // height: 601,
+    // backgroundColor: '#333',
+    paddingVertical:20,
+    gap: 10,
+    // alignItems: 'center',
+    // justifyContent: 'space-between',
   },
   containerAuth: {
     flex: 1,

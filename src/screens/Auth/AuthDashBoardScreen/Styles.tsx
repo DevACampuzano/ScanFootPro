@@ -4,13 +4,16 @@ import {Colors, normalize} from '../../../theme/Styles';
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 24,
+    // backgroundColor: 'red'
     // justifyContent: 'space-between'
   },
   containerAuth: {
-    justifyContent: 'center',
+    justifyContent: 'flex-end',
     alignItems: 'center',
-    height: 110
+    maxHeight: '25%',
+    // backgroundColor: 'blue',
+    paddingTop: 25,
+    backgroundColor: '#F2F2F2',
   },
   shoes: {
     width: 400,

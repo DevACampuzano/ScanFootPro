@@ -1,28 +1,35 @@
 import {StyleSheet} from 'react-native';
-import {Colors, normalize} from '../../../theme/Styles';
+import { normalize } from '../../../theme/Styles';
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    paddingTop: 24,
-    // backgroundColor: 'red'
+    alignItems: 'center',
+    paddingVertical: 100,
+    gap: 20
   },
   containerAuth: {
     justifyContent: 'center',
     alignItems: 'center',
-    paddingVertical: 10,
+    paddingVertical: 10, 
     gap: 10
   },
   shoes:{
     width: '100%',
     height: 480,
     borderColor: 'red',
-    marginTop: -80
+    marginTop: -100
   },
   title:{
-    fontSize: normalize(50),
-    color: Colors.primary,
+    fontSize: normalize(33),
+    color: '#009DA6',
     fontWeight: 'bold',
+    width: '90%'
+  },
+  text:{ 
+    fontSize: normalize(20),
+    color: '#000',
+    width: '90%'
   }
 });
 

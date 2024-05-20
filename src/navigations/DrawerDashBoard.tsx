@@ -25,7 +25,11 @@ export type DrawerDashBoardParams = {
 
 const Drawer = createDrawerNavigator<DrawerDashBoardParams>();
 
-function CustomDrawerContent(props) {
+function CustomDrawerContent(props: {
+  [x: string]: any;
+  state: any;
+  navigation: any;
+}) {
   const {state, navigation, ...rest} = props;
 
   const sections = [
@@ -88,7 +92,7 @@ function CustomDrawerContent(props) {
                       : 'share-social-outline'
                   }
                   size={30}
-                  color={ 
+                  color={
                     state.routeNames[state.index] === subItem ? '#fff' : '#000'
                   }
                 />
